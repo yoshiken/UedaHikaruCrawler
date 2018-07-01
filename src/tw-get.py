@@ -12,4 +12,4 @@ auth = twitter.OAuth(token = env.tw_token,
 
 t = twitter.Twitter(auth=auth)
 
-tweets = t.statuses.user_timeline(screen_name="uedakousiki"))
+tweets = t.statuses.user_timeline(screen_name="uedakousiki")
