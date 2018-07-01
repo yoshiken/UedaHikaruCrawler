@@ -11,3 +11,4 @@ ujson; sys_platform != "win32" and implementation_name == "cpython"
 uvloop; sys_platform != "win32" and implementation_name == "cpython"
 gunicorn
 sanic
+python-dotenv
