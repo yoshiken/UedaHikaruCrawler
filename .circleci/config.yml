@@ -10,3 +10,6 @@ jobs:
       - run:
             name: docker-compose up
             command: docker-compose up -d
+      - run:
+            name: run flake8
+            command: flake8 src/*
