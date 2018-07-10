@@ -11,8 +11,5 @@ jobs:
             name: docker-compose up
             command: docker-compose up -d
       - run:
-            name: flake8 install
-            command: pip install flake8 
-      - run:
             name: run flake8
-            command: flake8  --show-source src/*
+            command: docker-compose run web flake8  --show-source src/*

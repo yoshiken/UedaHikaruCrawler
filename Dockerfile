@@ -21,5 +21,3 @@ COPY . /app
 WORKDIR /app
 
 RUN pip install -r /app/requirements-dev.txt
-
-ENTRYPOINT ["./docker/bin/entrypoint.sh"]
