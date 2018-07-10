@@ -11,8 +11,8 @@ jobs:
             name: docker-compose up
             command: docker-compose up -d
       - run:
-            name: pipin dstal
-            command: pip indatsll -r requirements-dev.txtl 
+            name: pip install
+            command: pip install -r requirements-dev.txt 
       - run:
             name: run flake8
             command: flake8  --show-source src/*
