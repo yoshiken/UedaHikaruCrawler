@@ -1,4 +1,5 @@
 sanic
+Jinja2
 python-dotenv
 requests
 flake8
