@@ -1,7 +1,12 @@
 version: 2
 jobs:
   build:
-    machine: true
+    machine:
+      python:
+        version: 3.5.0
+    dependencies:
+      pre:
+        - pip install -r ./requirements.txt
     steps:
       - checkout
       - run:
@@ -10,9 +15,6 @@ jobs:
       - run:
             name: docker-compose up
             command: docker-compose up -d
-      - run:
-            name: pip install
-            command: pip install flake8
       - run:
             name: run flake8
             command: flake8  --show-source src/*
