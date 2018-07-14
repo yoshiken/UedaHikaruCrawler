@@ -14,11 +14,11 @@ RUN apk add --no-cache --update \
         readline-dev \
         sqlite-dev
 
-RUN update-ca-certificates\
+RUN update-ca-certificates &\
     rm -rf /var/cache/apk/*
 
 COPY . /app
 WORKDIR /app
 
-RUN pip install --upgrade pip\
+RUN pip install --upgrade pip &\
     pip install -r /app/requirements-dev.txt
