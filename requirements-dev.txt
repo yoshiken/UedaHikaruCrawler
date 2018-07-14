@@ -4,4 +4,3 @@ python-dotenv
 requests
 flake8
 sphinx
-Pillow
