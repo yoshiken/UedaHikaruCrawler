@@ -10,7 +10,7 @@ jobs:
             command: pip install --upgrade pip
       - run:
             name: pip install
-            command: pip install -r requirements-dev.txt
+            command: sudo pip install -r requirements-dev.txt
       - run:
             name: run flake8
             command: flake8  --show-source src/*
