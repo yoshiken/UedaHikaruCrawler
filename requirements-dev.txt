@@ -4,3 +4,4 @@ python-dotenv
 requests
 flake8
 sphinx
+requests_oauthlib
