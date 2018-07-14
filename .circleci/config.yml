@@ -6,11 +6,11 @@ jobs:
     steps:
       - checkout
       - run:
-            name: pip upgrade
-            command: pip install --upgrade pip
+            name: docker-compose build
+            command: docker-compose build
       - run:
-            name: pip install
-            command: sudo pip install -r requirements-dev.txt
+            name: docker-compose up
+            command: docker-compose up -d
       - run:
             name: run flake8
-            command: flake8  --show-source src/*
+            command: docker-compose run web flake8  --show-source src/*
