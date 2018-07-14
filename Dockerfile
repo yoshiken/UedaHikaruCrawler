@@ -17,7 +17,7 @@ RUN apk add --no-cache --update \
 RUN update-ca-certificates
 RUN rm -rf /var/cache/apk/*
 
-COPY . /app 
+COPY . /app
 WORKDIR /app
 
 RUN pip install -r /app/requirements-dev.txt
