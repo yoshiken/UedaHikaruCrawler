@@ -13,7 +13,4 @@ def dataGet():
     paramStr = urllib.parse.urlencode(param)
     readObj = urllib.request.urlopen(url + paramStr)
     response = readObj.read()
-    return response
-
-
-data = json.loads(dataGet())
+    return json.loads(response)
