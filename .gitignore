@@ -2,4 +2,5 @@
 .cache/*
 *.pyc
 .tox
-.env
+/src/API/internal/.env
+__pycache__
