@@ -1,7 +1,7 @@
 import urllib.parse
 import urllib.request
 import json
-import read_env as env
+import get_env as env
 
 
 def dataGet():

@@ -1,6 +1,6 @@
 import json
 from requests_oauthlib import OAuth1Session
-import read_env as env
+import get_env as env
 
 
 def getTweets():
