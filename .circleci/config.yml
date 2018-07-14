@@ -1,16 +1,21 @@
 version: 2
 jobs:
   build:
-    docker:
-    - image: circleci/python:3.6.5
+    machine: true
     steps:
       - checkout
       - run:
+            name: docker-compose build
+            command: docker-compose build
+      - run:
+            name: docker-compose up
+            command: docker-compose up -d
+      - run:
             name: pip upgrade
-            comaand: pip install --upgrade pip
+            comaand: python -m ensurepip --default-pip & pip install --upgrade pip
       - run:
             name: pip install
-            command: pip install -r requirements-dev.txt
+            command: pip install flake8
       - run:
             name: run flake8
             command: flake8  --show-source src/*
