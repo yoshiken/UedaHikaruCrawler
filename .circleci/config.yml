@@ -1,20 +1,16 @@
 version: 2
 jobs:
   build:
-    machine:
-      python:
-        version: 3.5.0
-    dependencies:
-      pre:
-        - pip install -r ./requirements.txt
-    steps:
+    docker:
+    - image: circleci/python:3.6.5
+    steps: ~/repo
       - checkout
       - run:
-            name: docker-compose build
-            command: docker-compose build
+            name: pip upgrade
+            comaand: pip install --upgrade pip
       - run:
-            name: docker-compose up
-            command: docker-compose up -d
+            name: pip install
+            command: pip install -r requirements-dev.txt
       - run:
             name: run flake8
             command: flake8  --show-source src/*
