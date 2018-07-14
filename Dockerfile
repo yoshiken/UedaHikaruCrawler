@@ -20,4 +20,5 @@ RUN update-ca-certificates\
 COPY . /app
 WORKDIR /app
 
-RUN pip install -r /app/requirements-dev.txt
+RUN pip install --upgrade pip\
+    pip install -r /app/requirements-dev.txt
