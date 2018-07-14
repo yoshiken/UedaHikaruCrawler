@@ -12,10 +12,10 @@ jobs:
             command: docker-compose up -d
       - run:
             name: pip upgrade
-            comaand: python -m ensurepip --default-pip & pip install --upgrade pip
+            comaand: pip install --upgrade pip
       - run:
             name: pip install
-            command: pip install flake8
+            command: pip install -r requirements-dev.txt
       - run:
             name: run flake8
             command: flake8  --show-source src/*
