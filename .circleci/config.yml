@@ -12,7 +12,7 @@ jobs:
             command: docker-compose up -d
       - run:
             name: pip upgrade
-            comaand: pip install --upgrade pip
+            command: pip install --upgrade pip
       - run:
             name: pip install
             command: pip install -r requirements-dev.txt
