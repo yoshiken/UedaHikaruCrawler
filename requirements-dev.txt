@@ -5,3 +5,4 @@ requests
 flake8
 sphinx
 requests_oauthlib
+PyQuery
