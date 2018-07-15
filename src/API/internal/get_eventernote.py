@@ -54,6 +54,7 @@ def getEventlist():
     doortimelist, showtimelist, closetimelist = getEventTime(res, eventcount)
     locationlist = getLocation(res, eventcount)
     return eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist
+<<<<<<< HEAD
 
 
 def getEvents():
@@ -70,3 +71,5 @@ def getEvents():
         "location":locationlist[ec]
         })
     return events
+=======
+>>>>>>> parent of 32d9515... :sparkles: events convert date
