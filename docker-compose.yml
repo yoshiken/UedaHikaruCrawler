@@ -3,4 +3,11 @@ services:
     web:
         build: .
         ports:
-            - "8000:8000"
+          - "8000:8000"
+    postgres:
+        image: postgres:11-alpine
+        ports:
+          - "5432:5432"
+        environment:
+          POSTGRES_USER: ueda
+          POSTGRES_PASSWORD: hikaru
