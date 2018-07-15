@@ -3,25 +3,23 @@ import re
 
 
 class Event:
-    def __getEventernoteHTML():
+
+    def __getEventernoteHTML(self):
         return pq(url='https://www.eventernote.com/actors/9735/events?limit=1000000')
 
-
-    def __getEventDate(res):
+    def __getEventDate(self, res):
         datetext = res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix')('.date').text()
         datepattern = r'\d{4}-\d{2}-\d{2}'
         return re.findall(datepattern, datetext)
 
-
-    def __getEventTitle(res, eventcount):
+    def __getEventTitle(self, res, eventcount):
         title = []
         for ec in range(eventcount):
             title.append(res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.event > h4').text().replace('\u3000', ' '))
         del title[0]
         return title
 
-
-    def __getEventTime(res, eventcount):
+    def __getEventTime(self, res, eventcount):
         timetext = res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix')('.place').text()
         timepattern = r'\d{2}:\d{2}|-'
         alltimedata = re.findall(timepattern, timetext)
@@ -37,8 +35,7 @@ class Event:
                 closetime.append(alltimedata[ec])
         return doortime, showtime, closetime
 
-
-    def __getLocation(res, eventcount):
+    def __getLocation(self, res, eventcount):
         location = []
         for ec in range(eventcount):
             locationtext = (res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.event > div:nth-child(2)').text())
@@ -46,28 +43,26 @@ class Event:
         del location[0]
         return location
 
-
-    def __getEventlist():
-        res = __getEventernoteHTML()
-        datelist = __getEventDate(res)
+    def __getEventlist(self):
+        res = self.__getEventernoteHTML()
+        datelist = self.__getEventDate(res)
         eventcount = len(datelist)
-        titlelist = __getEventTitle(res, eventcount)
-        doortimelist, showtimelist, closetimelist = __getEventTime(res, eventcount)
-        locationlist = __getLocation(res, eventcount)
+        titlelist = self.__getEventTitle(res, eventcount)
+        doortimelist, showtimelist, closetimelist = self.__getEventTime(res, eventcount)
+        locationlist = self.__getLocation(res, eventcount)
         return eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist
 
-
-    def getEvents():
-        eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist = __getEventlist()
+    def getEvents(self):
+        eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist = self.__getEventlist()
         events = []
-        for ec in range(eventcount-1):
+        for ec in range(eventcount - 1):
             events.append({
-            "eventcount":ec,
-            "date":datelist[ec],
-            "title":titlelist[ec],
-            "doortime":doortimelist[ec],
-            "showtime":showtimelist[ec],
-            "closetime":closetimelist[ec],
-            "location":locationlist[ec]
+                "eventcount": ec,
+                "date": datelist[ec],
+                "title": titlelist[ec],
+                "doortime": doortimelist[ec],
+                "showtime": showtimelist[ec],
+                "closetime": closetimelist[ec],
+                "location": locationlist[ec]
             })
         return events
