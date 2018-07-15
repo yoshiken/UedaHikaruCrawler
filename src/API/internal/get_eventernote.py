@@ -54,3 +54,19 @@ def getEventinfo():
     doortimelist, showtimelist, closetimelist = getEventTime(res, eventcount)
     locationlist = getLocation(res, eventcount)
     return eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist
+
+
+def getEventdict():
+    eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist = getEventinfo()
+    events = []
+    for ec in range(eventcount-1):
+        events.append({
+        "eventcount":ec,
+        "date":datelist[ec],
+        "title":titlelist[ec],
+        "doortime":doortimelist[ec],
+        "showtime":showtimelist[ec],
+        "closetime":closetimelist[ec],
+        "location":locationlist[ec]
+        })
+    return events
