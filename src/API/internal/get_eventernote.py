@@ -46,7 +46,7 @@ def getLocation(res, eventcount):
     return location
 
 
-def getEventinfo():
+def getEventlist():
     res = __getEventernoteHTML()
     datelist = getEventDate(res)
     eventcount = len(datelist)
@@ -56,8 +56,8 @@ def getEventinfo():
     return eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist
 
 
-def getEventdict():
-    eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist = getEventinfo()
+def getEvents():
+    eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist = getEventlist()
     events = []
     for ec in range(eventcount-1):
         events.append({
