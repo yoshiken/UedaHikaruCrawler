@@ -12,7 +12,9 @@ RUN apk add --no-cache --update \
         openssl \
         openssl-dev \
         readline-dev \
-        sqlite-dev
+        sqlite-dev \
+        libxml2-dev \
+        libxslt-dev
 
 RUN update-ca-certificates &\
     rm -rf /var/cache/apk/*
