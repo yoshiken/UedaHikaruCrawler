@@ -6,13 +6,13 @@ def __getEventernoteHTML():
     return pq(url='https://www.eventernote.com/actors/9735/events?limit=1000000')
 
 
-def getEventDate(res):
+def __getEventDate(res):
     datetext = res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix')('.date').text()
     datepattern = r'\d{4}-\d{2}-\d{2}'
     return re.findall(datepattern, datetext)
 
 
-def getEventTitle(res, eventcount):
+def __getEventTitle(res, eventcount):
     title = []
     for ec in range(eventcount):
         title.append(res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.event > h4').text().replace('\u3000', ' '))
@@ -20,7 +20,7 @@ def getEventTitle(res, eventcount):
     return title
 
 
-def getEventTime(res, eventcount):
+def __getEventTime(res, eventcount):
     timetext = res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix')('.place').text()
     timepattern = r'\d{2}:\d{2}|-'
     alltimedata = re.findall(timepattern, timetext)
@@ -37,7 +37,7 @@ def getEventTime(res, eventcount):
     return doortime, showtime, closetime
 
 
-def getLocation(res, eventcount):
+def __getLocation(res, eventcount):
     location = []
     for ec in range(eventcount):
         locationtext = (res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.event > div:nth-child(2)').text())
@@ -46,7 +46,7 @@ def getLocation(res, eventcount):
     return location
 
 
-def getEventlist():
+def __getEventlist():
     res = __getEventernoteHTML()
     datelist = getEventDate(res)
     eventcount = len(datelist)
