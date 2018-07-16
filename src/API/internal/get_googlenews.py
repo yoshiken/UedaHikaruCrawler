@@ -1,7 +1,7 @@
 import feedparser
-import json
 from pyquery import PyQuery as pq
 import datetime
+
 
 class News:
     def __getNewsHTML(self):
@@ -15,7 +15,6 @@ class News:
 
     def __getNewsDate(self, res):
         return datetime.datetime(*res[:6])
-
 
     def getNews(self):
         res = self.__getNewsHTML()
