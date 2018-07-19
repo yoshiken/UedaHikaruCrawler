@@ -7,3 +7,4 @@ sphinx
 requests_oauthlib
 PyQuery
 feedparser
+psycopg2
