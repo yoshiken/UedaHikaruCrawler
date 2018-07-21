@@ -12,5 +12,18 @@ class Tweet:
             "tweet_mode": "extended"
         }
         res = twitter.get(url, params=params)
-        resjson = json.loads(res.text)
-        return created_at, id, full_text, retweeted, in_reply_to_status_id, in_reply_to_user_id
+        return json.loads(res.text)
+
+    def parseTweets(self):
+        tweetsjson = self.getTweets()
+        withdrawnTweet = []
+        for index, tweet in enumerate(tweetsjson):
+            withdrawnTweet.append({
+                "id": tweetsjson[index]["id"],
+                "created_at": tweetsjson[index]["created_at"],
+                "text": tweetsjson[index]["full_text"],
+                "retweeted": tweetsjson[index]["retweeted"],
+                "in_reply_to_status_id": tweetsjson[index]["in_reply_to_status_id"],
+                "in_reply_to_user_id": tweetsjson[index]["in_reply_to_user_id"]
+            })
+        return withdrawnTweet
