@@ -3,7 +3,7 @@ import re
 
 
 class Event:
-
+    # TODO resがeventでまとまってるのでいちいち全文からParseする必要がない
     def __getEventernoteHTML(self):
         return pq(url='https://www.eventernote.com/actors/9735/events?limit=1000000')
 
@@ -20,19 +20,21 @@ class Event:
         return title
 
     def __getEventTime(self, res, eventcount):
-        timetext = res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix')('.place').text()
-        timepattern = r'\d{2}:\d{2}|-'
-        alltimedata = re.findall(timepattern, timetext)
         doortime = []
         showtime = []
         closetime = []
-        for ec in range(eventcount * 3):
-            if(ec == 0 or ec % 3 == 0):
-                doortime.append(alltimedata[ec])
-            elif(ec % 3 == 1):
-                showtime.append(alltimedata[ec])
-            else:
-                closetime.append(alltimedata[ec])
+        for ec in range(eventcount):
+            timetext = res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ')')('.place').text()
+            timepattern = r'\d{2}:\d{2}|-'
+            timedate = re.findall(timepattern, timetext)
+            if not timedate:
+                doortime.append('-')
+                showtime.append('-')
+                closetime.append('-')
+                continue
+            doortime.append(timedate[0])
+            showtime.append(timedate[1])
+            closetime.append(timedate[2])
         return doortime, showtime, closetime
 
     def __getLocation(self, res, eventcount):
