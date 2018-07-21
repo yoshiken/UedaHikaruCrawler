@@ -17,6 +17,7 @@ services:
           PGDATA: /var/lib/postgresql/data/pgdata
         volumes:
            - ./docker/postgres/data/:/var/lib/postgresql/data/
+           - ./docker/postgres/create:/docker-entrypoint-initdb.d
         user: root
         tty: true
         restart: always
