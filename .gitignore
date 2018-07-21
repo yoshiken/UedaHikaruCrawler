@@ -2,5 +2,5 @@
 .cache/*
 *.pyc
 .tox
-/src/API/internal/.env
+/src/cron/.env
 __pycache__
