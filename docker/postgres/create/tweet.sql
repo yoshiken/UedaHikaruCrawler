@@ -1,5 +1,5 @@
 CREATE TABLE tweets (
-  id PRIMARY KEY,
+  id INTEGER PRIMARY KEY,
   created_at TIMESTAMP NOT NULL,
   full_text TEXT NOT NULL,
   retweeted BOOLEAN,
