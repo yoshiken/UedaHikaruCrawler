@@ -4,6 +4,6 @@ CREATE TABLE event (
   title TEXT NOT NULL,
   doortime TIME,
   showtime TIME,
-  showtime TIME,
-  location TEXT,
-};
+  closetime TIME,
+  location TEXT
+);

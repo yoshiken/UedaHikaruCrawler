@@ -3,5 +3,5 @@ CREATE TABLE news (
   title TEXT,
   link TEXT,
   imgurl TEXT,
-  updatetime TIMESTAMP,
+  updatetime TIMESTAMP
 );
