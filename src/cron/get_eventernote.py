@@ -23,7 +23,7 @@ class Event:
         doortime = []
         showtime = []
         closetime = []
-        for ec in range(eventcount):
+        for ec in range(1, eventcount):
             timetext = res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ')')('.place').text()
             timepattern = r'\d{2}:\d{2}|-'
             timedate = re.findall(timepattern, timetext)
