@@ -5,3 +5,4 @@
 /src/cron/.env
 __pycache__
 /docker/postgres/data
+.python-version
