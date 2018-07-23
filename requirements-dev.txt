@@ -2,10 +2,13 @@ sanic
 Jinja2
 python-dotenv
 requests
-flake8
 sphinx
 requests_oauthlib
 PyQuery
 feedparser
 psycopg2-binary
 psycopg2
+
+# デバック用
+autopep8
+flake8
