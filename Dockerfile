@@ -23,10 +23,9 @@ RUN apk update && \
 RUN update-ca-certificates &&\
     rm -rf /var/cache/apk/*
 
-COPY . /app
-WORKDIR /app
+COPY requirements-dev.txt .
 
 RUN pip install --upgrade pip &&\
     pip install --upgrade setuptools &&\
-    pip install -r /app/requirements-dev.txt
+    pip install -r requirements-dev.txt
 CMD /bin/bash
