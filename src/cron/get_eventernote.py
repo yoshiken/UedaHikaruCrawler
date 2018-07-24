@@ -95,4 +95,5 @@ class Event:
         connectionsql.closeConnection(cur, conn)
 
 
-Event().event()
+if __name__ == '__main__':
+    Event().event()
