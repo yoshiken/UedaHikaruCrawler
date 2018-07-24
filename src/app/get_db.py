@@ -7,17 +7,17 @@ class getInfo:
         self.conn = psycopg2.connect(self.dsn)
         self.cur = self.conn.cursor()
 
-    def get_event(self):
+    def getEvent(self):
         self.cur.execute('SELECT * FROM event')
         return self.cur.fetchall()
 
-    def get_news(self):
+    def getNews(self):
         self.cur.execute('SELECT * FROM news')
         return self.cur.fetchall()
 
-    def get_wikipedia(self):
+    def getWikipedia(self):
         self.cur.execute('SELECT * FROM wikipedi')
         return self.cur.fetchall()
 
-    def get_all(self):
-        return self.get_event(), self.get_news(), self.get_wikipedia()
+    def getAll(self):
+        return self.getEvent(), self.getNews(), self.getWikipedia()
