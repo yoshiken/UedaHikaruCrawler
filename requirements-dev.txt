@@ -8,6 +8,7 @@ PyQuery
 feedparser
 psycopg2-binary
 psycopg2
+dateutil
 
 # デバック用
 autopep8
