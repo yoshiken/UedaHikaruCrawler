@@ -57,6 +57,7 @@ class Event:
     def getEvents(self):
         eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist = self.__getEventlist()
         events = []
+        # TODO ec使う必要あるか？(index引っ張ってこれそう)
         for ec in range(eventcount - 1):
             events.append({
                 "eventcount": ec,
@@ -77,6 +78,7 @@ class Event:
     def insert_event(self, event, cur):
         cur.execute('INSERT INTO event (day, title, location) VALUES (%s, %s, %s);', (event['date'], event['title'], event['location']))
 
+    # TODO もっと頭良くやれそう
     def update_event(self, event, cur):
         if event['doortime'] != '-':
             cur.execute('UPDATE event SET doortime = %s WHERE title = %s;', (event['doortime'], event['title']))
