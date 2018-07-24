@@ -6,7 +6,7 @@ from insertDB import connectionsql
 class Event:
     # TODO resがeventでまとまってるのでいちいち全文からParseする必要がない
     def __init__(self):
-        self.res = pq(url='https://www.eventernote.com/actors/9735/events?limit=1000000')
+        self.res = pq('https://www.eventernote.com/actors/9735/events?limit=1000000')
 
     def __getEventDate(self):
         datetext = self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix')('.date').text()
