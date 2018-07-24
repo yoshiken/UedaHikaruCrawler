@@ -1,9 +1,9 @@
 from sanic import Sanic
 from sanic.response import json
-from app import get_db
+from app import read_db
 
 app = Sanic()
-Events, News = get_db.getInfo().getAll()
+Events, News = read_db.readInfo().readAll()
 
 
 @app.route("/")

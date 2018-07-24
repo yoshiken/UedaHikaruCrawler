@@ -1,19 +1,19 @@
 import psycopg2
 
 
-class getInfo:
+class readInfo:
     def __init__(self):
         self.dsn = 'postgresql://ueda:hikaru@postgres:5432/ueda'
         self.conn = psycopg2.connect(self.dsn)
         self.cur = self.conn.cursor()
 
-    def getEvent(self):
+    def readEvent(self):
         self.cur.execute('SELECT * FROM event')
         return self.cur.fetchall()
 
-    def getNews(self):
+    def readNews(self):
         self.cur.execute('SELECT * FROM news')
         return self.cur.fetchall()
 
-    def getAll(self):
-        return self.getEvent(), self.getNews()
+    def readAll(self):
+        return self.readEvent(), self.readNews()
