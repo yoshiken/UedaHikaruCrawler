@@ -1,12 +1,9 @@
 from sanic import Sanic
 from sanic.response import json
-from app import playmaker
+from app import get_db
 
 app = Sanic()
-
-Events, News, Wikipedia = playmaker().info().readAllInfo()
-
-print(Events)
+Events, News = get_db.getInfo().getAll()
 
 
 @app.route("/")
