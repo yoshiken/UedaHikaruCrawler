@@ -15,9 +15,5 @@ class getInfo:
         self.cur.execute('SELECT * FROM news')
         return self.cur.fetchall()
 
-    def getWikipedia(self):
-        self.cur.execute('SELECT * FROM wikipedi')
-        return self.cur.fetchall()
-
     def getAll(self):
-        return self.getEvent(), self.getNews(), self.getWikipedia()
+        return self.getEvent(), self.getNews()
