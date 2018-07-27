@@ -22,3 +22,5 @@ services:
         user: root
         tty: true
         restart: always
+    cron:
+        build: docker/cron
