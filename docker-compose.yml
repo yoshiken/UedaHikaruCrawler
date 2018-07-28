@@ -24,3 +24,5 @@ services:
         restart: always
     cron:
         build: docker/cron
+        volumes:
+           - ./src/cron/:/src/
