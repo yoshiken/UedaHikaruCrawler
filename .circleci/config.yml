@@ -5,8 +5,14 @@ jobs:
     steps:
       - checkout
       - run:
-            name: docker-compose build
-            command: docker-compose build
+            name: docker-compose build postgres
+            command: docker-compose build postgres
+      - run:
+            name: docker-compose build cron
+            command: docker-compose build cron
+      - run:
+            name: docker-compose build web
+            command: docker-compose build web            
       - run:
             name: docker-compose up
             command: docker-compose up -d
