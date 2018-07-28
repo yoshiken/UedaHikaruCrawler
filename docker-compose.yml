@@ -24,5 +24,7 @@ services:
         restart: always
     cron:
         build: docker/cron
+        depends_on:
+          - postgres
         volumes:
            - ./src/cron/:/src/
