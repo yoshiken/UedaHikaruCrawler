@@ -1,2 +1,2 @@
-* * * * * /usr/local/bin/python /src/get_eventernote.py 1>> /src/log/event.log 2>> /src/log/event-err.log
-* * * * * /usr/local/bin/python /src/get_googlenews.py 1>> /src/log/news.log 2>> /src/log/news-err.log
+*/10 * * * * /usr/local/bin/python /src/get_eventernote.py 1>> /src/log/event.log 2>> /src/log/event-err.log
+*/5 * * * * /usr/local/bin/python /src/get_googlenews.py 1>> /src/log/news.log 2>> /src/log/news-err.log
