@@ -3,6 +3,7 @@ FROM python:3.6.5-alpine
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache --update \
+        tzdata \
         curl \
         bash \
         build-base \
@@ -18,6 +19,10 @@ RUN apk update && \
         libxslt-dev \
         libpq \
         postgresql-dev
+
+
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk del tzdata
 
 
 RUN update-ca-certificates &&\

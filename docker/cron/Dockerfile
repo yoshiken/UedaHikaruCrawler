@@ -3,6 +3,7 @@ FROM python:3.6.5-alpine
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache --update \
+        tzdata \
         bash \
         build-base \
         ca-certificates \
@@ -16,6 +17,9 @@ RUN apk update && \
 
 RUN update-ca-certificates &&\
     rm -rf /var/cache/apk/*
+
+RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
+    apk del tzdata
 
 COPY requirements-dev.txt .
 
