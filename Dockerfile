@@ -33,4 +33,4 @@ COPY requirements-dev.txt .
 RUN pip install --upgrade pip &&\
     pip install --upgrade setuptools &&\
     pip install -r requirements-dev.txt
-CMD /bin/bash
+CMD ["/bin/bash"]
