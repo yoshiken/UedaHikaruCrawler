@@ -9,7 +9,4 @@ feedparser
 psycopg2-binary
 psycopg2
 python-dateutil
-
-# デバック用
-autopep8
 flake8
