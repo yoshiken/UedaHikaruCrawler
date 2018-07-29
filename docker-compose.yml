@@ -28,3 +28,4 @@ services:
           - postgres
         volumes:
            - ./src/cron/:/src/
+           - ./log/:/log/

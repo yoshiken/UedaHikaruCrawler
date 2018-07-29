@@ -2,6 +2,7 @@ import feedparser
 from pyquery import PyQuery as pq
 from insertDB import connectionsql
 import dateutil.parser
+from datetime import datetime
 
 
 class News:
@@ -37,3 +38,4 @@ class News:
 
 if __name__ == '__main__':
     News().news()
+    print(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))

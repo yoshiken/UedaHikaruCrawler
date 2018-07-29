@@ -1,6 +1,7 @@
 from pyquery import PyQuery as pq
 import re
 from insertDB import connectionsql
+from datetime import datetime
 
 
 class Event:
@@ -99,3 +100,4 @@ class Event:
 
 if __name__ == '__main__':
     Event().event()
+    print(datetime.now().strftime('%Y/%m/%d %H:%M:%S'))
