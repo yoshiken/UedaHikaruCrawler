@@ -4,6 +4,11 @@ services:
         build: .
         volumes:
           - .:/app
+        environment:
+          PGHOST: postgres
+          PGPORT: ${POSTGRES_PORT}
+          PGUSER: ${POSTGRES_USER}
+          PGPASSWORD: ${POSTGRES_PASSWORD}
         ports:
           - "8000:8000"
         depends_on:
@@ -11,10 +16,10 @@ services:
     postgres:
         build: docker/postgres
         ports:
-          - "5432:5432"
+          - "5432:${POSTGRES_PORT}"
         environment:
-          POSTGRES_USER: ueda
-          POSTGRES_PASSWORD: hikaru
+          POSTGRES_USER: ${POSTGRES_USER}
+          POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
           POSTGRES_INITDB_ARGS: "--encoding=UTF-8 --locale=ja_JP.UTF-8"
           PGDATA: /var/lib/postgresql/data/pgdata
         volumes:
@@ -24,6 +29,11 @@ services:
         restart: always
     cron:
         build: docker/cron
+        environment:
+          PGHOST: postgres
+          PGPORT: ${POSTGRES_PORT}
+          PGUSER: ${POSTGRES_USER}
+          PGPASSWORD: ${POSTGRES_PASSWORD}
         depends_on:
           - postgres
         volumes:

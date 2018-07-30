@@ -2,7 +2,7 @@
 .cache/*
 *.pyc
 .tox
-/src/cron/.env
+.env
 __pycache__
 /docker/postgres/data
 .python-version
