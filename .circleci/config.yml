@@ -5,6 +5,9 @@ jobs:
     steps:
       - checkout
       - run:
+            name: Copy env
+            command: cp .env.sample .env
+      - run:
             name: docker-compose build postgres
             command: docker-compose build postgres
       - run:
@@ -12,7 +15,7 @@ jobs:
             command: docker-compose build cron
       - run:
             name: docker-compose build web
-            command: docker-compose build web            
+            command: docker-compose build web
       - run:
             name: docker-compose up
             command: docker-compose up -d
