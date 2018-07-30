@@ -13,7 +13,8 @@ RUN apk update && \
         postgresql-dev \
         libxml2-dev \
         libxslt-dev \
-        apk-cron
+        apk-cron \
+        postgresql-client
 
 RUN update-ca-certificates &&\
     rm -rf /var/cache/apk/*
@@ -28,6 +29,7 @@ RUN pip install --upgrade pip &&\
     pip install -r requirements-dev.txt
 
 COPY ./crontab /var/spool/cron/crontabs/root
+COPY ./wait_postgres.sh .
 
 
-CMD ["crond", "-l", "2", "-f"]
+CMD ["sh", "./wait_postgres.sh"]
