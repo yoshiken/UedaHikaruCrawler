@@ -1,4 +1,11 @@
 #!/bin/sh
+
+if [ ! -d log/cron ]
+then
+    echo "make dir log/cron"
+    mkdir log/cron
+fi
+
 echo "Waiting for Posgresql"
 until psql &> /dev/null
 do
