@@ -18,7 +18,8 @@ RUN apk update && \
         libxml2-dev \
         libxslt-dev \
         libpq \
-        postgresql-dev
+        postgresql-dev \
+        postgresql-client
 
 
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
@@ -33,4 +34,7 @@ COPY requirements-dev.txt .
 RUN pip install --upgrade pip &&\
     pip install --upgrade setuptools &&\
     pip install -r requirements-dev.txt
-CMD ["/bin/bash"]
+
+COPY ./docker/web/entrypoint.sh .
+
+CMD ["sh", "./entrypoint.sh"]
