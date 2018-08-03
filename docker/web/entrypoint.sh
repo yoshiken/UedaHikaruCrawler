@@ -1,6 +1,5 @@
 #!/bin/sh
 
-if [ ! -d log/cron ]
 echo "Waiting for Posgresql"
 until psql &> /dev/null
 do
