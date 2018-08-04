@@ -10,7 +10,7 @@ services:
           PGUSER: ${POSTGRES_USER}
           PGPASSWORD: ${POSTGRES_PASSWORD}
         ports:
-          - "8000:8000"
+          - "80:8000"
         depends_on:
           - postgres
     postgres:
@@ -27,6 +27,7 @@ services:
         user: root
         tty: true
         restart: always
+
     cron:
         build: docker/cron
         environment:
