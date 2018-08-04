@@ -9,7 +9,7 @@ done
 
 >&2 echo "Posgresql is up - executing command"
 
-echo "start cron"
+echo "start web"
 
 cd /app/src
 python main.py
