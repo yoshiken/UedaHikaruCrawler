@@ -1,4 +1,5 @@
 import psycopg2
+import psycopg2.extras
 import os
 
 
@@ -10,11 +11,24 @@ class readInfo:
         pgport = os.environ['PGPORT']
         self.dsn = 'postgresql://' + pguser + ':' + pgpassword + '@' + pghost + ':' + str(pgport) + '/' + pguser
         self.conn = psycopg2.connect(self.dsn)
-        self.cur = self.conn.cursor()
+        self.cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    def get_dict_resultset(sql):
+        self.cur.execute (sql)
+        results = self.cur.fetchall()
+        dict_result = []
+        for row in results:
+            dict_result.append(dict(row))
+        return dict_result
 
     def readEvent(self):
         self.cur.execute('SELECT * FROM event')
-        return self.cur.fetchall()
+        results = self.cur.fetchall()
+        dict_result = []
+        for row in results:
+            dict_result.append(dict(row))
+        return dict_result
+
 
     def readNews(self):
         self.cur.execute('SELECT * FROM news')
