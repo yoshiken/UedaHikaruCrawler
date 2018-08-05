@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from sanic import Sanic
 from sanic import response
 from jinja2 import Environment, FileSystemLoader
