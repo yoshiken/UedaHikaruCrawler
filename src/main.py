@@ -2,7 +2,7 @@ from sanic import Sanic
 from sanic import response
 from jinja2 import Environment, FileSystemLoader
 from app import read_db
-
+import json
 
 env = Environment(loader=FileSystemLoader('/app/src/templates/', encoding='utf8'))
 app = Sanic()
@@ -14,6 +14,12 @@ async def index(request):
     tpl = env.get_template('index.html')
     html = tpl.render({'hoge':'hello'})
     return response.html(html)
+
+@app.route("/api/events")
+async def apiEvents(request):
+    app = Sanic()
+    Events = read_db.readInfo().readEvent()
+    return response.json(Events)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8000)
