@@ -33,8 +33,7 @@ class readInfo:
         dict_res = []
         for row in res:
             dict_res.append(dict(row))
-        return json.dumps(dict_res, default=self.json_serial)
-
+        return json.dumps(dict_res, default=self.json_serial, sort_keys=True, ensure_ascii=False)
 
     def readNews(self):
         self.cur.execute('SELECT * FROM news')
