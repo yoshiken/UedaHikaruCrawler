@@ -41,11 +41,3 @@ services:
         volumes:
            - ./src/cron/:/src/
            - ./log/:/log/
-
-    node:
-        build: docker/node
-        tty: true
-        volumes:
-            - ./src/css/:/css/
-            - ./src/sass/:/sass/
-            - ./package.json:/package.json
