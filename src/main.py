@@ -8,7 +8,6 @@ app = Sanic(__name__)
 app.static('/static', './www/static')
 
 @app.route("/")
-@app.route('/<path:path>')
 async def index(request):
     fin=open('./www/index.html')
     html=fin.read()
