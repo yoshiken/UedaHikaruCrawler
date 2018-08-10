@@ -1,6 +1,6 @@
 {
-  "name": "vue",
-  "short_name": "vue",
+  "name": "UedaHikaruCrawler",
+  "short_name": "UHC",
   "icons": [
     {
       "src": "/img/icons/android-chrome-192x192.png",

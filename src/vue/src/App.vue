@@ -7,7 +7,7 @@
 
       <md-app-drawer md-permanent="full">
         <md-toolbar class="md-transparent" md-elevation="0">
-          Navigation
+          UedaHikaruCrawler
         </md-toolbar>
 
         <md-list>

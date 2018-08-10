@@ -5,5 +5,9 @@ module.exports = {
   baseUrl: undefined,
   productionSourceMap: undefined,
   parallel: undefined,
-  css: undefined
+  css: undefined,
+
+  pwa: {
+    name: 'UedaHikaruCrawler ver.α'
+  }
 }
