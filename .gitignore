@@ -9,3 +9,4 @@ __pycache__
 /log/
 src/vue/node_modules/
 src/www/
+node_modules/

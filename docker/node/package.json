@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/yoshiken/UedaHikaruCrawler#readme",
   "devDependencies": {
-    "grunt": "1.0.3"
+    "grunt": "1.0.3",
+    "vue-loader": "^15.3.0"
+  },
+  "dependencies": {
+    "vue": "^2.5.17"
   }
 }
