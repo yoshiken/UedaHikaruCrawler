@@ -5,7 +5,7 @@ from sanic import response
 from app import read_db
 
 app = Sanic(__name__)
-app.static('/static', './www/static')
+app.static('/', './www/')
 
 @app.route("/")
 async def index(request):
