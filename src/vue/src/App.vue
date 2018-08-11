@@ -13,22 +13,32 @@
         <md-list>
           <md-list-item>
             <md-icon>move_to_inbox</md-icon>
-            <span class="md-list-item-text">Inbox</span>
+            <span class="md-list-item-text">HOME</span>
           </md-list-item>
 
           <md-list-item>
             <md-icon>send</md-icon>
-            <span class="md-list-item-text">Sent Mail</span>
+            <span class="md-list-item-text">Events</span>
           </md-list-item>
 
           <md-list-item>
-            <md-icon>delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
+            <md-icon>send</md-icon>
+            <span class="md-list-item-text">News</span>
           </md-list-item>
 
           <md-list-item>
-            <md-icon>error</md-icon>
-            <span class="md-list-item-text">Spam</span>
+            <md-icon>send</md-icon>
+            <span class="md-list-item-text">Twitter</span>
+          </md-list-item>
+
+          <md-list-item>
+            <md-icon>send</md-icon>
+            <span class="md-list-item-text">About</span>
+          </md-list-item>
+
+          <md-list-item>
+            <md-icon>send</md-icon>
+            <span class="md-list-item-text">Develop</span>
           </md-list-item>
         </md-list>
       </md-app-drawer>
@@ -48,7 +58,6 @@
 
 <style lang="scss" scoped>
   .md-app {
-    min-height: 350px;
     border: 1px solid rgba(#000, .12);
   }
 
