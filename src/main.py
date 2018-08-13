@@ -24,5 +24,13 @@ def catch_apiEvents():
         'events':Events
     })
 
+@app.route('/api/news')
+def catch_apiNews():
+    News = read_db.readInfo().readNews()
+    return jsonify({
+        'status':'200',
+        'news':News
+    })
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

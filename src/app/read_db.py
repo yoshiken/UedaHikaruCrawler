@@ -42,7 +42,13 @@ class readInfo:
 
     def readNews(self):
         self.cur.execute('SELECT * FROM news')
-        return self.cur.fetchall()
+        res = self.cur.fetchall()
+        dict_res = []
+        for row in res:
+            if row['updatetime'] is not None:
+                row['updatetime'] = row['updatetime'].isoformat()
+            dict_res.append(dict(row))
+        return dict_res
 
     def readAll(self):
         return self.readEvent(), self.readNews()
