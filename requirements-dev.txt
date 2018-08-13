@@ -1,5 +1,4 @@
-sanic
-Jinja2
+Flask
 python-dotenv
 requests
 sphinx
