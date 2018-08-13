@@ -23,17 +23,22 @@ class readInfo:
             dict_result.append(dict(row))
         return dict_result
 
-    def json_serial(self, obj):
-        if isinstance(obj, (datetime, date)):
-            return obj.isoformat()
-
     def readEvent(self):
         self.cur.execute('SELECT * FROM event')
         res = self.cur.fetchall()
         dict_res = []
         for row in res:
+            if row['day'] is not None:
+                row['day'] = row['day'].strftime('%Y/%m/%d')
+            ## @TODO lamda使ってdatatatimeだったら変換
+            if row['doortime'] is not None:
+                row['doortime'] = row['doortime'].isoformat()
+            if row['showtime'] is not None:
+                row['showtime'] = row['showtime'].isoformat()
+            if row['closetime'] is not None:
+                row['closetime'] = row['closetime'].isoformat()
             dict_res.append(dict(row))
-        return json.dumps(dict_res, default=self.json_serial, sort_keys=True, ensure_ascii=False)
+        return dict_res
 
     def readNews(self):
         self.cur.execute('SELECT * FROM news')
