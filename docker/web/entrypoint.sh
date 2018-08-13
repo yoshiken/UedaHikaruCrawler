@@ -12,4 +12,4 @@ done
 echo "start web"
 
 cd /app/src
-python main.py
+uwsgi --ini /app/docker/web/uwsgi.ini
