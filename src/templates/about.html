@@ -1,35 +1,4 @@
-<!DOCTYPE html>
-<html lang="jp">
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
-  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
-  <title>UedahikaruCrawler</title>
-</head>
-<body>
-  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
-              mdl-layout--fixed-header">
-    <header class="mdl-layout__header">
-      <div class="mdl-layout__header-row">
-
-      </div>
-    </header>
-    <div class="mdl-layout__drawer">
-      <span class="mdl-layout-title">植田ひかるCrawler</span>
-      <nav class="mdl-navigation">
-        <a class="mdl-navigation__link" href="/"><i class="material-icons">home</i> Home</a>
-        <a class="mdl-navigation__link" href="/events"><i class="material-icons">event</i> Events</a>
-        <a class="mdl-navigation__link" href="/news"><i class="material-icons">rss_feed</i> News</a>
-        <a class="mdl-navigation__link" href="/twitter"><img src="/static/img/twitter.jpg" alt="twitter" width="24" height="24">Twitter</a>
-        <a class="mdl-navigation__link" href="/about"><i class="material-icons">assignment</i>About</a>
-        <a class="mdl-navigation__link" href="/develop"><i class="material-icons">build</i>Develop</a>
-      </nav>
-    </div>
-    <main class="mdl-layout__content">
-      <div class="page-content">
-        This page about
-      </div>
-    </main>
-  </div>
-</body>
+{% extends "layout.html" %}
+{% block body %}
+this page about
+{% endblock %}
