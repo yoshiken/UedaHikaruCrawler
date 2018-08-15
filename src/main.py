@@ -3,17 +3,14 @@
 from flask import Flask, render_template, request, jsonify
 from app import read_db
 
-app = Flask(__name__,
-            static_folder = "./www/static",
-            template_folder = "./www")
+app = Flask(__name__)
 
 ## JSON日本語文字化け対策
 app.config['JSON_AS_ASCII'] = False
 app.config["JSON_SORT_KEYS"] = False
 
-@app.route('/', defaults={'path': ''})
-@app.route('/<path:path>')
-def catch_all(path):
+@app.route('/')
+def catch_all():
     return render_template("index.html")
 
 @app.route('/api/events')

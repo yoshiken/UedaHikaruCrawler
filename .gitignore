@@ -7,4 +7,3 @@ __pycache__
 /docker/postgres/data
 .python-version
 /log/
-src/www/
