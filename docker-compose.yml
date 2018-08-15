@@ -17,7 +17,6 @@ services:
         build: docker/web-nginx
         volumes:
           - ./docker/web-nginx/nginx.conf:/etc/nginx/nginx.conf
-          - ./src/www/static/:/static/
         links:
           - web
         ports:
