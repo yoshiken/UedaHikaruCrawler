@@ -2,8 +2,7 @@
 import psycopg2
 import psycopg2.extras
 import os
-import json
-from datetime import date, datetime
+
 
 class readInfo:
     def __init__(self):
@@ -16,7 +15,7 @@ class readInfo:
         self.cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
 
     def get_dict_resultset(self, sql):
-        self.cur.execute (sql)
+        self.cur.execute(sql)
         results = self.cur.fetchall()
         dict_result = []
         for row in results:
@@ -30,7 +29,7 @@ class readInfo:
         for row in res:
             if row['day'] is not None:
                 row['day'] = row['day'].strftime('%Y/%m/%d')
-            ## @TODO lamda使ってdatatatimeだったら変換
+            # @TODO lamda使ってdatatatimeだったら変換
             if row['doortime'] is not None:
                 row['doortime'] = row['doortime'].isoformat()
             if row['showtime'] is not None:

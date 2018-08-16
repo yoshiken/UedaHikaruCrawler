@@ -71,16 +71,16 @@ class Event:
             })
         return events
 
-    def is_event(self, title, cur):
+    def isEvent(self, title, cur):
         cur.execute('SELECT * FROM event WHERE title = %s', (title, ))
         rows = cur.fetchone()
         return bool(rows)
 
-    def insert_event(self, event, cur):
+    def insertEvent(self, event, cur):
         cur.execute('INSERT INTO event (day, title, location) VALUES (%s, %s, %s);', (event['date'], event['title'], event['location']))
 
     # TODO もっと頭良くやれそう
-    def update_event(self, event, cur):
+    def updateEvent(self, event, cur):
         if event['doortime'] != '-':
             cur.execute('UPDATE event SET doortime = %s WHERE title = %s;', (event['doortime'], event['title']))
         if event['showtime'] != '-':
@@ -92,9 +92,9 @@ class Event:
         cur, conn = connectionsql.openConnection()
         eventList = self.getEvents()
         for event in eventList:
-            if not self.is_event(event['title'], cur):
-                self.insert_event(event, cur)
-            self.update_event(event, cur)
+            if not self.isEvent(event['title'], cur):
+                self.insertEvent(event, cur)
+            self.updateEvent(event, cur)
         connectionsql.closeConnection(cur, conn)
 
 
