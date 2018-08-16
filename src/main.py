@@ -21,14 +21,12 @@ def catch_all():
 
 @app.route('/events')
 def catch_event():
-    Events = read_db.readInfo().readEvent()
-    return render_template("events.html")
+    return render_template("events.html", Events=read_db.readInfo().readEvent())
 
 
 @app.route('/news')
 def catch_news():
-    Events = read_db.readInfo().readEvent()
-    return render_template("news.html")
+    return render_template("news.html", News=read_db.readInfo().readNews())
 
 
 @app.route('/twitter')
