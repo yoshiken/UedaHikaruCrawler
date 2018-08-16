@@ -11,8 +11,8 @@
 					<h1 class="mdl-card__title-text">{{event.title}}</h1>
 				</div>
 				<div class="mdl-card__supporting-text">
-					<p>Day : {{ event.day }}</p>
-          <p>doortime : {{ event.doortime }} </p>
+					<p>Day : {{ event.day }}　　　location : {{ event.location }}</p>
+          <p>doortime : {{ event.doortime }}　　　showtime: {{ event.showtime }}　　　closetime: {{ event.closetime}}</p>
 				</div>
 				<div class="mdl-card__actions mdl-card--border">
         <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
@@ -25,8 +25,7 @@
     	  </div>
       </div>
     {% endfor %}
-        </div>
+    </div>
 	</main>
 </div>
-
 {% endblock %}
