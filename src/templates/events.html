@@ -1,4 +1,29 @@
 {% extends "layout.html" %}
 {% block body %}
-this page events
+<link rel="stylesheet" href="{{ url_for('static', filename='./css/card.css') }}">
+<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
+	<main class="mdl-layout__content">
+        <div class="mdl-grid">
+      {% for event in Events %}
+      {{ event }}
+      <div class="mdl-card mdl-cell mdl-cell--9-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+				<div class="mdl-card__title">
+					<h1 class="mdl-card__title-text">{{event.title}}</h1>
+				</div>
+				<div class="mdl-card__supporting-text">
+					<p>Day : {{ event.day }}</p>
+          <p>doortime : {{ event.doortime }} </p>
+				</div>
+				<div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
+        <div class="mdl-layout-spacer"></div>
+        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
+    		<button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
+    	  </div>
+      </div>
+    {% endfor %}
+        </div>
+	</main>
+</div>
+
 {% endblock %}
