@@ -3,6 +3,7 @@
 }
 .mdl-card__media {
 	margin: 0;
+	background-color: inherit;
 }
 .mdl-card__media > img {
 	max-width: 100%;
