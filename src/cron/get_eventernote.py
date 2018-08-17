@@ -2,6 +2,8 @@ from pyquery import PyQuery as pq
 import re
 from insertDB import connectionsql
 from datetime import datetime
+import requests
+import md5
 
 
 class Event:
@@ -53,10 +55,11 @@ class Event:
         titlelist = self.__getEventTitle(eventcount)
         doortimelist, showtimelist, closetimelist = self.__getEventTime(eventcount)
         locationlist = self.__getLocation(eventcount)
-        return eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist
+        imgnamelist = self.getEventsImg(eventcount)
+        return eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist, imgnamelist
 
     def getEvents(self):
-        eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist = self.__getEventlist()
+        eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist, imgnamelist = self.__getEventlist()
         events = []
         # TODO ec使う必要あるか？(index引っ張ってこれそう)
         for ec in range(eventcount - 1):
@@ -67,9 +70,21 @@ class Event:
                 "doortime": doortimelist[ec],
                 "showtime": showtimelist[ec],
                 "closetime": closetimelist[ec],
-                "location": locationlist[ec]
+                "location": locationlist[ec],
+                "imgname": imgnamelist[ec]
             })
         return events
+
+    def getEventsImg(self, ec):
+        imgURL = (self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.date')('img').attr('src'))
+        img = requests.get(imgURL)
+        filename = imgURL.split('/')[-1]
+        try:
+            with open('/app/src/static/' + filename, mode='x') as f:
+                f.write(img.content)
+        except FileExistsError:
+            pass
+        return filename
 
     def isEvent(self, title, cur):
         cur.execute('SELECT * FROM event WHERE title = %s', (title, ))

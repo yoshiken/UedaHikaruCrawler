@@ -5,5 +5,6 @@ CREATE TABLE event (
   doortime TIME,
   showtime TIME,
   closetime TIME,
-  location TEXT
+  location TEXT,
+  imgname TEXT,
 );
