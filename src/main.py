@@ -28,7 +28,7 @@ def catch_event():
 @app.route('/news')
 def catch_news():
     News = read_db.readInfo().readNews()
-    return render_template("news.html", News=sorted(News, key=lambda x: x['newsid']))
+    return render_template("news.html", News=sorted(News, key=lambda x: x['newsid'],reverse=True))
 
 
 @app.route('/twitter')
