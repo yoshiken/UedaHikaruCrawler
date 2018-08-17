@@ -31,11 +31,11 @@ class readInfo:
                 row['day'] = row['day'].strftime('%Y/%m/%d')
             # @TODO lamda使ってdatatatimeだったら変換
             if row['doortime'] is not None:
-                row['doortime'] = row['doortime'].isoformat()
+                row['doortime'] = row['doortime'].strftime('%H:%M')
             if row['showtime'] is not None:
-                row['showtime'] = row['showtime'].isoformat()
+                row['showtime'] = row['showtime'].strftime('%H:%M')
             if row['closetime'] is not None:
-                row['closetime'] = row['closetime'].isoformat()
+                row['closetime'] = row['closetime'].strftime('%H:%M')
             dict_res.append(dict(row))
         return dict_res
 
