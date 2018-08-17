@@ -3,7 +3,6 @@ import re
 from insertDB import connectionsql
 from datetime import datetime
 import requests
-import md5
 
 
 class Event:
@@ -73,18 +72,27 @@ class Event:
                 "location": locationlist[ec],
                 "imgname": imgnamelist[ec]
             })
+            print(imgnamelist[ec])
         return events
 
-    def getEventsImg(self, ec):
-        imgURL = (self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.date')('img').attr('src'))
-        img = requests.get(imgURL)
-        filename = imgURL.split('/')[-1]
-        try:
-            with open('/app/src/static/' + filename, mode='x') as f:
-                f.write(img.content)
-        except FileExistsError:
-            pass
-        return filename
+    def getEventsImg(self, eventcount):
+        filenames = []
+        for ec in range(eventcount):
+            imgURL = (self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.date')('img').attr('src'))
+            if imgURL is None:
+                filenames.append(None)
+                continue
+            img = requests.get(imgURL)
+            filename = imgURL.split('/')[-1]
+            filenames.append(filename)
+            try:
+                with open('/app/src/static/img/event/' + filename, 'wb') as f:
+                    f.write(img.content)
+            except FileExistsError:
+                pass
+        del filenames[0]
+        print(filenames)
+        return filenames
 
     def isEvent(self, title, cur):
         cur.execute('SELECT * FROM event WHERE title = %s', (title, ))
@@ -92,10 +100,11 @@ class Event:
         return bool(rows)
 
     def insertEvent(self, event, cur):
-        cur.execute('INSERT INTO event (day, title, location) VALUES (%s, %s, %s);', (event['date'], event['title'], event['location']))
+        cur.execute('INSERT INTO event (day, title, location, imgname) VALUES (%s, %s, %s);', (event['date'], event['title'], event['location'], event['imgname']))
 
     # TODO もっと頭良くやれそう
     def updateEvent(self, event, cur):
+        cur.execute('UPDATE event SET imgname = %s WHERE title = %s;', (event['imgname'], event['title']))
         if event['doortime'] != '-':
             cur.execute('UPDATE event SET doortime = %s WHERE title = %s;', (event['doortime'], event['title']))
         if event['showtime'] != '-':
