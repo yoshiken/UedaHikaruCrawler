@@ -72,7 +72,6 @@ class Event:
                 "location": locationlist[ec],
                 "imgname": imgnamelist[ec]
             })
-            print(imgnamelist[ec])
         return events
 
     def getEventsImg(self, eventcount):
@@ -91,7 +90,6 @@ class Event:
             except FileExistsError:
                 pass
         del filenames[0]
-        print(filenames)
         return filenames
 
     def isEvent(self, title, cur):
