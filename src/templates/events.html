@@ -1,36 +1,32 @@
 {% extends "layout.html" %}
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='./css/card.css') }}">
-<div class="mdl-layout mdl-js-layout mdl-color--grey-100">
-	<main class="mdl-layout__content">
-        <div class="mdl-grid">
-      {% for event in Events %}
-      <div class="mdl-card mdl-cell mdl-cell--9-col mdl-cell--4-col-tablet mdl-shadow--2dp">
-				<div class="mdl-card__title">
-					<h1 class="mdl-card__title-text">{{event.title}}</h1>
+<div class="mdl-grid">
+	{% for event in Events %}
+  	<div class="mdl-card mdl-cell mdl-cell--11-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+			<div class="mdl-card__title">
+				<h1 class="mdl-card__title-text">{{event.title}}</h1>
+			</div>
+			<div class="flex">
+				<div class="mdl-card__supporting-text mdl-cell--8-col">
+					<p><i class="material-icons">today</i>{{ event.day }}　　<i class="material-icons">location_on</i>{{ event.location }}</p>
+	        <p><i class="material-icons">directions_run</i>{{ event.doortime }}　　　<i class="material-icons">music_note</i>{{ event.showtime }}　　　<i class="material-icons">lock</i>{{ event.closetime }}</p>
 				</div>
-				<div class="flex">
-					<div class="mdl-card__supporting-text mdl-cell--8-col">
-						<p><i class="material-icons">today</i>{{ event.day }}　　<i class="material-icons">location_on</i>{{ event.location }}</p>
-	          <p><i class="material-icons">directions_run</i>{{ event.doortime }}　　　<i class="material-icons">music_note</i>{{ event.showtime }}　　　<i class="material-icons">lock</i>{{ event.closetime }}</p>
-					</div>
-					<div class="mdl-card__media mdl-cell--3-col">
-						<img src="{{ url_for('static', filename='./img/event/') }}{{event.imgname}}" width="173" border="0" alt="イベント画像">
-					</div>
+				<div class="mdl-card__media mdl-cell--3-col">
+					<img src="{{ url_for('static', filename='./img/event/') }}{{event.imgname}}" width="173" border="0" alt="イベント画像">
 				</div>
-				<div class="mdl-card__actions mdl-card--border">
-	        <!-- @TODO どこかリンク先実装するぞ！
-					<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
-					-->
-	        <div class="mdl-layout-spacer"></div>
-	        <button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
-					<a href="https://twitter.com/share?url=https%3A%2F%2Flocalhost&related=twitterapi%2Ctwitter&text=custom%20share%20text" target=”_blank”>
-						<button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
-					</a>
-    	  </div>
-      </div>
-    {% endfor %}
-    </div>
-	</main>
+			</div>
+			<div class="mdl-card__actions mdl-card--border">
+	      <!-- @TODO どこかリンク先実装するぞ！
+				<a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Read More</a>
+				-->
+		    <div class="mdl-layout-spacer"></div>
+	    	<button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">favorite</i></button>
+				<a href="https://twitter.com/share?url=https%3A%2F%2Flocalhost&related=twitterapi%2Ctwitter&text=custom%20share%20text" target=”_blank”>
+					<button class="mdl-button mdl-button--icon mdl-button--colored"><i class="material-icons">share</i></button>
+				</a>
+    	</div>
+  	</div>
+	{% endfor %}
 </div>
 {% endblock %}

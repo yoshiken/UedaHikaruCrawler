@@ -28,7 +28,11 @@
     </div>
     <main class="mdl-layout__content">
       <div class="page-content">
-        {% block body %}{% endblock %}
+        <div class="mdl-layout mdl-js-layout mdl-color--grey-100">
+        	<main class="mdl-layout__content">
+          {% block body %}{% endblock %}
+          </main>
+        </div>
       </div>
     </main>
   </div>
