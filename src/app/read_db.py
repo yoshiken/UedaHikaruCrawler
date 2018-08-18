@@ -23,7 +23,7 @@ class readInfo:
         return dict_result
 
     def readEvent(self):
-        self.cur.execute('SELECT * FROM event ORDER BY day')
+        self.cur.execute('SELECT * FROM event ORDER BY day DESC')
         res = self.cur.fetchall()
         dict_res = []
         for row in res:
@@ -40,7 +40,7 @@ class readInfo:
         return dict_res
 
     def readNews(self):
-        self.cur.execute('SELECT * FROM news ORDER BY updatetime')
+        self.cur.execute('SELECT * FROM news ORDER BY updatetime  DESC')
         res = self.cur.fetchall()
         dict_res = []
         for row in res:
