@@ -28,12 +28,7 @@ class Event:
         for ec in range(1, eventcount+1):
             timetext = self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ')')('.place').text()
             timepattern = r'\d{2}:\d{2}|-'
-            timedate = re.findall(timepattern, timetext)
-            if not timedate:
-                doortime.append('-')
-                showtime.append('-')
-                closetime.append('-')
-                continue
+            timedate = [None if i is '-' else i for i in re.findall(timepattern, timetext)]
             doortime.append(timedate[0])
             showtime.append(timedate[1])
             closetime.append(timedate[2])
@@ -99,13 +94,7 @@ class Event:
 
     # TODO もっと頭良くやれそう
     def updateEvent(self, event, cur):
-        cur.execute('UPDATE event SET imgname = %s WHERE eventid = %s;', (event['imgname'], event['eventid']))
-        if event['doortime'] != '-':
-            cur.execute('UPDATE event SET doortime = %s WHERE eventid = %s;', (event['doortime'], event['eventid']))
-        if event['showtime'] != '-':
-            cur.execute('UPDATE event SET showtime = %s WHERE eventid = %s;', (event['showtime'], event['eventid']))
-        if event['closetime'] != '-':
-            cur.execute('UPDATE event SET closetime = %s WHERE eventid = %s;', (event['closetime'], event['eventid']))
+        cur.execute('UPDATE event SET day = %s, title = %s, doortime = %s, showtime = %s, closetime = %s, imgname = %s WHERE eventid = %s;', (event['date'], event['title'], event['doortime'], event['showtime'], event['closetime'], event['imgname'], event['eventid']))
 
     def event(self):
         cur, conn = connectionsql.openConnection()
