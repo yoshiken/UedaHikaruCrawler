@@ -61,7 +61,7 @@ class Event:
         # TODO ec使う必要あるか？(index引っ張ってこれそう)
         for ec in range(eventcount):
             events.append({
-                "eventcount": ec,
+                "eventid": ec,
                 "date": datelist[ec],
                 "title": titlelist[ec],
                 "doortime": doortimelist[ec],
@@ -89,8 +89,8 @@ class Event:
                 pass
         return filenames
 
-    def isEvent(self, title, cur):
-        cur.execute('SELECT * FROM event WHERE title = %s', (title, ))
+    def isEvent(self, eventid, cur):
+        cur.execute('SELECT * FROM event WHERE eventid = %s', (eventid, ))
         rows = cur.fetchone()
         return bool(rows)
 
@@ -99,19 +99,19 @@ class Event:
 
     # TODO もっと頭良くやれそう
     def updateEvent(self, event, cur):
-        cur.execute('UPDATE event SET imgname = %s WHERE title = %s;', (event['imgname'], event['title']))
+        cur.execute('UPDATE event SET imgname = %s WHERE eventid = %s;', (event['imgname'], event['eventid']))
         if event['doortime'] != '-':
-            cur.execute('UPDATE event SET doortime = %s WHERE title = %s;', (event['doortime'], event['title']))
+            cur.execute('UPDATE event SET doortime = %s WHERE eventid = %s;', (event['doortime'], event['eventid']))
         if event['showtime'] != '-':
-            cur.execute('UPDATE event SET showtime = %s WHERE title = %s;', (event['showtime'], event['title']))
+            cur.execute('UPDATE event SET showtime = %s WHERE eventid = %s;', (event['showtime'], event['eventid']))
         if event['closetime'] != '-':
-            cur.execute('UPDATE event SET closetime = %s WHERE title = %s;', (event['closetime'], event['title']))
+            cur.execute('UPDATE event SET closetime = %s WHERE eventid = %s;', (event['closetime'], event['eventid']))
 
     def event(self):
         cur, conn = connectionsql.openConnection()
         eventList = self.getEvents()
         for event in eventList:
-            if not self.isEvent(event['title'], cur):
+            if not self.isEvent(event['eventid'], cur):
                 self.insertEvent(event, cur)
             self.updateEvent(event, cur)
         connectionsql.closeConnection(cur, conn)
