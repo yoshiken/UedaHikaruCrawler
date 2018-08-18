@@ -8,7 +8,7 @@ import requests
 class Event:
     # TODO resがeventでまとまってるのでいちいち全文からParseする必要がない
     def __init__(self):
-        self.res = pq('https://www.eventernote.com/actors/9735/events?limit=1000000')
+        self.res = pq('https://www.eventernote.com/actors/9735/events?limit=1000000&sort=event_date&order=ASC')
 
     def __getEventDate(self):
         datetext = self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix')('.date').text()
@@ -17,16 +17,15 @@ class Event:
 
     def __getEventTitle(self, eventcount):
         title = []
-        for ec in range(eventcount):
+        for ec in range(1, eventcount+1):
             title.append(self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.event > h4').text().replace('\u3000', ' '))
-        del title[0]
         return title
 
     def __getEventTime(self, eventcount):
         doortime = []
         showtime = []
         closetime = []
-        for ec in range(1, eventcount):
+        for ec in range(1, eventcount+1):
             timetext = self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ')')('.place').text()
             timepattern = r'\d{2}:\d{2}|-'
             timedate = re.findall(timepattern, timetext)
@@ -42,10 +41,9 @@ class Event:
 
     def __getLocation(self, eventcount):
         location = []
-        for ec in range(eventcount):
+        for ec in range(1, eventcount+1):
             locationtext = (self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.event > div:nth-child(2)').text())
             location.append(locationtext.replace('会場: ', ''))
-        del location[0]
         return location
 
     def __getEventlist(self):
@@ -61,7 +59,7 @@ class Event:
         eventcount, datelist, titlelist, doortimelist, showtimelist, closetimelist, locationlist, imgnamelist = self.__getEventlist()
         events = []
         # TODO ec使う必要あるか？(index引っ張ってこれそう)
-        for ec in range(eventcount - 1):
+        for ec in range(eventcount):
             events.append({
                 "eventcount": ec,
                 "date": datelist[ec],
@@ -76,7 +74,7 @@ class Event:
 
     def getEventsImg(self, eventcount):
         filenames = []
-        for ec in range(eventcount):
+        for ec in range(1, eventcount+1):
             imgURL = (self.res('body > div.container > div > div.span8.page > div.gb_event_list.clearfix > ul > li:nth-child(' + str(ec) + ') > div.date')('img').attr('src'))
             if imgURL is None:
                 filenames.append(None)
@@ -89,7 +87,6 @@ class Event:
                     f.write(img.content)
             except FileExistsError:
                 pass
-        del filenames[0]
         return filenames
 
     def isEvent(self, title, cur):
