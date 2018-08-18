@@ -95,7 +95,7 @@ class Event:
         return bool(rows)
 
     def insertEvent(self, event, cur):
-        cur.execute('INSERT INTO event (day, title, location, imgname) VALUES (%s, %s, %s);', (event['date'], event['title'], event['location'], event['imgname']))
+        cur.execute('INSERT INTO event (day, title, location, imgname) VALUES (%s, %s, %s, %s);', (event['date'], event['title'], event['location'], event['imgname']))
 
     # TODO もっと頭良くやれそう
     def updateEvent(self, event, cur):
