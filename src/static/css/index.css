@@ -1,0 +1,13 @@
+.index-title {
+  font-size: 40px;
+  padding-top: 30px;
+}
+.index-center{
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: stretch;
+  align-items: stretch;
+  text-align: center;
+}
