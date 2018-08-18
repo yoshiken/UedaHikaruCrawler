@@ -13,7 +13,7 @@ app.config['DEBUG'] = True
 
 
 @app.route('/')
-def catch_all():
+def catch_index():
     Events = read_db.readInfo().readEvent()
     News = read_db.readInfo().readNews()
     return render_template("index.html")
