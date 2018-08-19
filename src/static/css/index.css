@@ -1,7 +1,14 @@
 .index-title {
   font-size: 40px;
+  padding-top: 40px;
+  font-weight: 550;
+}
+
+.index-title-sub {
+  font-size: 25px;
   padding-top: 30px;
 }
+
 .index-center{
   display: -webkit-flex;
   display: flex;
