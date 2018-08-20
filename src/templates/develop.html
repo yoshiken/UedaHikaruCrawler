@@ -1,4 +1,39 @@
 {% extends "layout.html" %}
 {% block body %}
-this page develop
+<link rel="stylesheet" href="{{ url_for('static', filename='./css/develop.css') }}">
+<div class="develop-center">
+    <br>
+    <p>
+    絶賛開発中です。<br>
+    そもそも技術のサンドボックス的な意味合いなので結構試験中のコードもがっつり置いてあります。<br>
+    </p>
+    <p>
+    我こそは植田ひかるのファンなり！という方はissueやPRをお待ちしております。<br>
+    </p>
+    <p>
+    <a href="https://github.com/yoshiken/UedaHikaruCrawler">https://github.com/yoshiken/UedaHikaruCrawler</a><br>
+    </p>
+    <p>
+    以下はやりたいことをずらずら〜っと書きます。上の方から優先度高めです。
+    </p>
+    <p>
+    サーバー監視<br>
+    デザイン見直し(特にモバイル)<br>
+    vue.jsでコンポーネント管理<br>
+    ↑できたらSPA<br>
+    ↑できたらPWA<br>
+    Twitter機能(設計から)<br>
+    API Doc整備 & 公開<br>
+    テストコード<br>
+    Deploy時にシステムを落とさなくていいように<br>
+    Migration機能<br>
+    通知機能<br>
+    </p>
+    <p>
+      仕様確認やこうやりたいよね〜みたいなのあったらTwitterかissueでmentionください。
+    </p>
+    <p>
+      Twtter:<a href="http://twitter.com/yoshiken_tut">@yoshiken_tut</a>
+    </p>
+</div>
 {% endblock %}
