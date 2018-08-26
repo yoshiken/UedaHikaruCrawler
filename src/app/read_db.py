@@ -27,15 +27,21 @@ class readInfo:
         res = self.cur.fetchall()
         dict_res = []
         for row in res:
+            # @TODO lamdaで辞書全部にNone = 未定をやる
             if row['day'] is not None:
                 row['day'] = row['day'].strftime('%Y/%m/%d')
             # @TODO lamda使ってdatatatimeだったら変換
             if row['doortime'] is not None:
                 row['doortime'] = row['doortime'].strftime('%H:%M')
+            else: row['doortime'] = "未定"
             if row['showtime'] is not None:
                 row['showtime'] = row['showtime'].strftime('%H:%M')
+            else: row['showtime'] = "未定"
             if row['closetime'] is not None:
                 row['closetime'] = row['closetime'].strftime('%H:%M')
+            else: row['closetime'] = "未定"
+            if row['location'] is None:
+                row['location'] = "未定"
             dict_res.append(dict(row))
         return dict_res
 
