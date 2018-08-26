@@ -55,5 +55,11 @@ class readInfo:
             dict_res.append(dict(row))
         return dict_res
 
+    def readNextEvent(self):
+        res = self.readEvent()
+        res = res[0]
+        return res
+
+
     def readAll(self):
         return self.readEvent(), self.readNews()
