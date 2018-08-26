@@ -19,9 +19,15 @@
   text-align: center;
 }
 
+.index-flex{
+  display: flex;
+  justify-content: space-around;
+}
+.index-nextevent-text{
+  padding: 0px 16px 5px 16px;
+}
+
 .demo-card-event.mdl-card {
-  width: 256px;
-  height: 256px;
   background: #3E4EB8;
 }
 .demo-card-event > .mdl-card__actions {
@@ -29,6 +35,7 @@
 }
 .demo-card-event > .mdl-card__title {
   align-items: flex-start;
+  padding: 0px 16px 5px 16px;
 }
 .demo-card-event > .mdl-card__title > h4 {
   margin-top: 0;
@@ -43,6 +50,7 @@
 }
 .demo-card-event > .mdl-card__title,
 .demo-card-event > .mdl-card__actions,
-.demo-card-event > .mdl-card__actions > .mdl-button {
+.demo-card-event > .mdl-card__actions > .mdl-button,
+.demo-card-event > .mdl-card__supporting-text {
   color: #fff;
 }
