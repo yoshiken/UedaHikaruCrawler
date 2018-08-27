@@ -56,9 +56,16 @@ class readInfo:
         return dict_res
 
     def readNextEvent(self):
-        res = self.readEvent()
-        res = res[0]
-        return res
+        self.cur.execute('SELECT * FROM event WHERE day >= CURRENT_DATE ORDER BY day DESC')
+        res = self.cur.fetchall()
+        dict_res = []
+        for row in res:
+            if row['location'] is None:
+                row['location'] = "未定"
+            if row['showtime'] is not None:
+                row['showtime'] = row['showtime'].strftime('%H:%M')
+            dict_res.append(dict(row))
+        return dict_res
 
 
     def readAll(self):
