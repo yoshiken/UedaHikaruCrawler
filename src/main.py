@@ -16,8 +16,8 @@ app.config['DEBUG'] = True
 def catch_index():
     Events = read_db.readInfo().readEvent()
     News = read_db.readInfo().readNews()
-    NextEvent = read_db.readInfo().readNextEvent()
-    return render_template("index.html", NextEvent=NextEvent)
+    NextEvents = read_db.readInfo().readNextEvent()
+    return render_template("index.html", NextEvents=NextEvents)
 
 
 @app.route('/events')
