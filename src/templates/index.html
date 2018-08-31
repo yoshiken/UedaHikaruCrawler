@@ -7,15 +7,16 @@
   </div>
 </div>
 <br>
-<br>
+<div class="index-flex">
+<label class="index-nextevent-title"><label class="material-icons index-nextevent-title-icon">fast_forward</label>Next Events</label>
+</div>
 <div class="index-flex">
 {% for NextEvent in NextEvents %}
-<div class="demo-card-event mdl-card mdl-shadow--2dp mdl-cell--6-col">
+<div class="index-nextevents-card mdl-card mdl-shadow--2dp mdl-cell--5-col">
   <div class="mdl-card__title mdl-card--expand">
-    <h5>Next Event</h5>
+    <h6>{{ NextEvent.title }}</h6>
   </div>
   <div class="mdl-card__supporting-text index-nextevent-text">
-    <h6>{{ NextEvent.title }}</h6>
     <h7><i class="material-icons">location_on</i>{{ NextEvent.location }}<h7>
     <i class="material-icons">today</i><h7>{{ NextEvent.day }}</h7>
     <h7>{{ NextEvent.showtime }}</h7>
