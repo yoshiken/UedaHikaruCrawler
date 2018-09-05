@@ -33,13 +33,16 @@ class readInfo:
             # @TODO lamda使ってdatatatimeだったら変換
             if row['doortime'] is not None:
                 row['doortime'] = row['doortime'].strftime('%H:%M')
-            else: row['doortime'] = "未定"
+            else:
+                row['doortime'] = "未定"
             if row['showtime'] is not None:
                 row['showtime'] = row['showtime'].strftime('%H:%M')
-            else: row['showtime'] = "未定"
+            else:
+                row['showtime'] = "未定"
             if row['closetime'] is not None:
                 row['closetime'] = row['closetime'].strftime('%H:%M')
-            else: row['closetime'] = "未定"
+            else:
+                row['closetime'] = "未定"
             if row['location'] is None:
                 row['location'] = "未定"
             dict_res.append(dict(row))
@@ -66,7 +69,6 @@ class readInfo:
                 row['showtime'] = row['showtime'].strftime('%H:%M')
             dict_res.append(dict(row))
         return dict_res
-
 
     def readAll(self):
         return self.readEvent(), self.readNews()
