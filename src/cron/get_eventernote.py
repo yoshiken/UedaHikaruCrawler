@@ -94,7 +94,7 @@ class Event:
 
     # TODO もっと頭良くやれそう
     def updateEvent(self, event, cur):
-        cur.execute('UPDATE event SET day = %s, title = %s, doortime = %s, showtime = %s, closetime = %s, imgname = %s WHERE eventid = %s;', (event['date'], event['title'], event['doortime'], event['showtime'], event['closetime'], event['imgname'], event['eventid']))
+        cur.execute('UPDATE event SET day = %s, title = %s, doortime = %s, showtime = %s, closetime = %s, imgname = %s, location = %s WHERE eventid = %s;', (event['date'], event['title'], event['doortime'], event['showtime'], event['closetime'], event['imgname'], event['location'], event['eventid']))
 
     def event(self):
         cur, conn = connectionsql.openConnection()
