@@ -16,7 +16,7 @@ app.config['DEBUG'] = True
 
 @app.route('/')
 def catch_index():
-    NextEvents = read_db.readInfo().readNextEvent()
+    NextEvents = createGoogleCalendarAddURL(read_db.readInfo().readNextEvent())
     return render_template("index.html", NextEvents=NextEvents)
 
 
