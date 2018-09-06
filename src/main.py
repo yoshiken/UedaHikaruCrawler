@@ -2,6 +2,8 @@
 
 from flask import Flask, render_template, jsonify
 from app import read_db
+import urllib.parse
+
 
 app = Flask(__name__)
 
@@ -66,9 +68,10 @@ def catch_apiNews():
 def createGoogleCalendarAddURL(events):
     base = 'http://www.google.com/calendar/event?action=TEMPLATE'
     for event in events:
-        title = '&text=' + event['title']
-        date = '&dates=' + event['date'] + 'T' + event['showtime'] + '/' + event['date'] + 'T' + event['closetime']
-        location = '&location=' + event['location']
+        print(event['showtime'].replace(":", ""))
+        title = '&text=' + urllib.parse.quote(event['title'])
+        date = '&dates=' + event['day'].strftime('%Y%m%d') + 'T' + event['showtime'].replace(":", "") + '00/' + event['day'].strftime('%Y%m%d') + 'T' + event['closetime'].strftime('%H%M%S')
+        location = '&location=' + urllib.parse.quote(event['location'])
         event['addccalendaurl'] = base + title + date + location
     return events
 
