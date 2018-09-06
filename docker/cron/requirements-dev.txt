@@ -3,3 +3,4 @@ crontab
 PyQuery
 feedparser
 python-dateutil
+requests
