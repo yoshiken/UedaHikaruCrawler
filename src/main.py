@@ -64,6 +64,14 @@ def catch_apiNews():
         'news': News
     })
 
+def createGoogleCalendarAddURL(events):
+    base = 'http://www.google.com/calendar/event?action=TEMPLATE'
+    for event in events:
+        title = '&text=' + event['title']
+        date = '&dates=' + event['date'] + 'T' + event['showtime'] + '/' + event['date'] + 'T' + event['closetime']
+        location = '&location=' + event['location']
+        event['addccalendaurl'] = base + title + date + location
+    return events
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
