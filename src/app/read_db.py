@@ -51,7 +51,7 @@ class readInfo:
         return dict_res
 
     def readNextEvent(self):
-        self.cur.execute('SELECT * FROM event WHERE day >= CURRENT_DATE ORDER BY day DESC')
+        self.cur.execute('SELECT * FROM event WHERE day >= CURRENT_DATE ORDER BY day, showtime')
         res = self.cur.fetchall()
         dict_res = []
         for row in res:
