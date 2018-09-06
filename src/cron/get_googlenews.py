@@ -9,17 +9,21 @@ class News:
     def __init__(self):
         self.res = feedparser.parse('https://news.google.com/news/rss/search/section/q/%E6%A4%8D%E7%94%B0%E3%81%B2%E3%81%8B%E3%82%8B/%E6%A4%8D%E7%94%B0%E3%81%B2%E3%81%8B%E3%82%8B?ned=jp&gl=JP&hl=ja')
 
-    def __getNewsImageURL(self):
-        newstext = pq(self.res['entries'][0]['summary'])
+    def __getNewsImageURL(self, summary):
+        newstext = pq(summary)
         newsimg = newstext('img')
         return newsimg.attr('src')
 
-    def getNews(self):
-        news = {}
-        news['title'] = self.res['entries'][0]['title']
-        news['link'] = self.res['entries'][0]['link']
-        news['imgurl'] = self.__getNewsImageURL()
-        news['updatetime'] = dateutil.parser.parse(self.res['entries'][0]['published'])
+    def getNews(self, cur):
+        news = [[] for i in range(len(self.res['entries']))]
+        infotmp = {}
+        for i, info in enumerate(self.res['entries']):
+            infotmp.clear()
+            infotmp['title'] = info['title']
+            infotmp['link'] = info['link']
+            infotmp['imgurl'] = self.__getNewsImageURL(info['summary'])
+            infotmp['updatetime'] = dateutil.parser.parse(info['published'])
+            self.update_news(infotmp['title'], infotmp['link'], infotmp['imgurl'], infotmp['updatetime'], cur)
         return news
 
     def update_news(self, title, link, imgurl, updatetime, cur):
@@ -31,8 +35,7 @@ class News:
 
     def news(self):
         cur, conn = connectionsql.openConnection()
-        newsinfo = self.getNews()
-        self.update_news(newsinfo['title'], newsinfo['link'], newsinfo['imgurl'], newsinfo['updatetime'], cur)
+        self.getNews(cur)
         connectionsql.closeConnection(cur, conn)
 
 

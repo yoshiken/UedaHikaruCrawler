@@ -78,7 +78,7 @@ class Event:
             filename = imgURL.split('/')[-1]
             filenames.append(filename)
             try:
-                with open('/app/src/static/img/event/' + filename, 'wb') as f:
+                with open('/src/static/img/event/' + filename, 'wb') as f:
                     f.write(img.content)
             except FileExistsError:
                 pass
@@ -94,7 +94,7 @@ class Event:
 
     # TODO もっと頭良くやれそう
     def updateEvent(self, event, cur):
-        cur.execute('UPDATE event SET day = %s, title = %s, doortime = %s, showtime = %s, closetime = %s, imgname = %s WHERE eventid = %s;', (event['date'], event['title'], event['doortime'], event['showtime'], event['closetime'], event['imgname'], event['eventid']))
+        cur.execute('UPDATE event SET day = %s, title = %s, doortime = %s, showtime = %s, closetime = %s, imgname = %s, location = %s WHERE eventid = %s;', (event['date'], event['title'], event['doortime'], event['showtime'], event['closetime'], event['imgname'], event['location'], event['eventid']))
 
     def event(self):
         cur, conn = connectionsql.openConnection()
