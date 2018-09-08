@@ -35,7 +35,6 @@ services:
         user: root
         tty: true
         restart: always
-
     cron:
         build: docker/cron
         environment:
@@ -48,3 +47,17 @@ services:
         volumes:
            - ./src/:/src/
            - ./log/:/log/
+    https-portal:
+        image: steveltn/https-portal:1.0.0
+        ports:
+          - '80:80'
+          - '443:443'
+        links:
+          - web
+        restart: always
+        environment:
+          DOMAINS: 'uedahikaru.info -> http://web-nginx:4231/'
+          STAGE: local
+          #STAGE: 'production'
+        volumes:
+          - ./docker/https/certs/:/var/lib/https-portal/
