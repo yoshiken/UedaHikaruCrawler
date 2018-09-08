@@ -66,12 +66,14 @@ def catch_apiNews():
 
 
 def createGoogleCalendarAddURL(events):
-    base = 'http://www.google.com/calendar/event?action=TEMPLATE'
+    url = 'http://www.google.com/calendar/event?action=TEMPLATE'
     for event in events:
-        title = '&text=' + urllib.parse.quote(event['title'])
-        date = '&dates=' + event['day'].strftime('%Y%m%d') + 'T' + event['showtime'].replace(":", "") + '00/' + event['day'].strftime('%Y%m%d') + 'T' + event['closetime'].strftime('%H%M%S')
-        location = '&location=' + urllib.parse.quote(event['location'])
-        event['addccalendaurl'] = base + title + date + location
+        url += '&text=' + urllib.parse.quote(event['title'])
+        if (event['day'] is not None and event['showtime'] is not None and event['closetime'] is not None):
+            url += '&dates=' + event['day'].strftime('%Y%m%d') + 'T' + event['showtime'].replace(":", "") + '00/' + event['day'].strftime('%Y%m%d') + 'T' + event['closetime'].strftime('%H%M%S')
+        if (event['location'] is not None):
+            url += '&location=' + urllib.parse.quote(event['location'])
+        event['addccalendaurl'] = url
     return events
 
 
