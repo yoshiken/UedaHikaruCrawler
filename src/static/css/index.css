@@ -17,12 +17,12 @@
   -webkit-align-items: stretch;
   align-items: stretch;
   text-align: center;
-  flex-wrap: wrap;
 }
 
 .index-flex {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .index-nextevent-title {
