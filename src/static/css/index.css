@@ -17,6 +17,7 @@
   -webkit-align-items: stretch;
   align-items: stretch;
   text-align: center;
+  flex-wrap: wrap;
 }
 
 .index-flex {
@@ -36,6 +37,7 @@
 
 .index-nextevents-card.mdl-card {
   background: #3E4EB8;
+  margin-bottom: 50px
 }
 .index-nextevents-card > .mdl-card__actions {
   border-color: rgba(255, 255, 255, 0.2);
