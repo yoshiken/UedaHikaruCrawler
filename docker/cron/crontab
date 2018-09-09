@@ -1,2 +1,2 @@
-*/10 * * * * /usr/local/bin/python /src/get_eventernote.py 1>> /log/cron/event.log 2>> /log/cron/event-err.log
-*/5 * * * * /usr/local/bin/python /src/get_googlenews.py 1>> /log/cron/news.log 2>> /log/cron/news-err.log
+*/10 * * * * /usr/local/bin/python /src/cron/get_eventernote.py 1>> /log/cron/event.log 2>> /log/cron/event-err.log
+*/5 * * * * /usr/local/bin/python /src/cron/get_googlenews.py 1>> /log/cron/news.log 2>> /log/cron/news-err.log
