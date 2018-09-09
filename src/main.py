@@ -5,7 +5,7 @@ from app import read_db
 import urllib.parse
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='')
 
 # JSON日本語文字化け対策
 app.config['JSON_AS_ASCII'] = False
