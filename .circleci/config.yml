@@ -34,4 +34,6 @@ workflows:
   test:
     jobs:
       - dockertest
-      - pythontest
+      - pythontest:
+          requires:
+            - dockertest
