@@ -8,3 +8,4 @@ __pycache__
 .python-version
 /log/
 /src/static/img/event/*.jpg
+/docker/https/*
