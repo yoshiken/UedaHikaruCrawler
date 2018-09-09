@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  dockertest:
+  test:
     machine: true
     steps:
       - checkout
