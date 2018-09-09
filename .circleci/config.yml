@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  dockertest:
     machine: true
     steps:
       - checkout
@@ -22,7 +22,7 @@ jobs:
       - run:
             name: docker-compose up
             command: docker-compose up -d
-  test:
+  pythontest:
     machine: true
     steps:
       - checkout
