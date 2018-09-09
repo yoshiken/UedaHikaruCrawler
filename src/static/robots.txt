@@ -1,0 +1,3 @@
+User-agent: *
+
+Sitemap: https://cdn.qiita.com/sitemap-https/sitemap.xml.gz
