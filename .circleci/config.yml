@@ -33,5 +33,5 @@ workflows:
   version: 2
   test:
     jobs:
-      - docker test
-      - python test
+      - dockertest
+      - pythontest
