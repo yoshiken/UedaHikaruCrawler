@@ -22,6 +22,10 @@ jobs:
       - run:
             name: docker-compose up
             command: docker-compose up -d
+  test:
+    machine: true
+    steps:
+      - checkout
       - run:
             name: run flake8
             command: docker-compose run web flake8  --show-source src/*
@@ -29,4 +33,5 @@ workflows:
   version: 2
   test:
     jobs:
-      - test
+      - docker test
+      - python test
