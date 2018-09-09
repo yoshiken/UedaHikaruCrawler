@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  test:
     machine: true
     steps:
       - checkout
@@ -25,3 +25,8 @@ jobs:
       - run:
             name: run flake8
             command: docker-compose run web flake8  --show-source src/*
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
