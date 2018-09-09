@@ -48,15 +48,15 @@ services:
            - ./src/:/src/
            - ./log/:/log/
     https-portal:
-        image: steveltn/https-portal:1.0.0
+        image: steveltn/https-portal:latest
         ports:
           - '80:80'
           - '443:443'
         links:
-          - web
+          - web-nginx
         restart: always
         environment:
-          DOMAINS: 'uedahikaru.info -> http://web-nginx:4231/'
+          DOMAINS: 'uedahikaru.info -> http://web-nginx/'
           STAGE: local
           #STAGE: 'production'
         volumes:
