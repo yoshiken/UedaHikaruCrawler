@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from app import read_db
 import urllib.parse
 
@@ -22,8 +22,13 @@ def catch_index():
 
 @app.route('/events')
 def catch_event():
-    Event = read_db.readInfo().readEvent()
-    return render_template("events.html", Events=Event)
+    page = request.args.get('page')
+    Events = read_db.readInfo().readEvent()
+    if page is None:
+        page = 1
+    page = int(page) * 15
+    Events = Events[page - 15: page]
+    return render_template("events.html", Events=Events)
 
 
 @app.route('/news')
