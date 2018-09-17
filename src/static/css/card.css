@@ -20,3 +20,13 @@
 .flex {
 	display: flex;
 }
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+	.mdl-card__title-text {
+		font-size: 12px;
+	}
+	.material-icons.news-icon,
+		font-size: 18px;
+	}
+}
