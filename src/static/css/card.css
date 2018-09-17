@@ -27,6 +27,10 @@
 		font-size: 12px;
 	}
 	.material-icons.news-icon,
+	.material-icons.event-icon {
 		font-size: 18px;
+	}
+	.mdl-card__supporting-text {
+		font-size: 10px;
 	}
 }

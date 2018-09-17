@@ -9,8 +9,8 @@
 			</div>
 			<div class="flex">
 				<div class="mdl-card__supporting-text mdl-cell--8-col">
-					<p><i class="material-icons">today</i>{{ event.day }}　　<i class="material-icons">location_on</i>{{ event.location }}</p>
-	        <p><i class="material-icons">directions_run</i>{{ event.doortime }}　　　<i class="material-icons">music_note</i>{{ event.showtime }}　　　<i class="material-icons">lock</i>{{ event.closetime }}</p>
+					<div><i class="material-icons event-icon">today</i>{{ event.day }}　<i class="material-icons event-icon">location_on</i>{{ event.location }}</div>
+	        <div><i class="material-icons event-icon">directions_run</i>{{ event.doortime }}　<i class="material-icons event-icon">music_note</i>{{ event.showtime }}　<i class="material-icons event-icon">lock</i>{{ event.closetime }}</div>
 				</div>
 				<div class="mdl-card__media mdl-cell--3-col">
 					<img src="{{ url_for('static', filename='./img/event/') }}{{event.imgname}}" width="173" border="0" alt="イベント画像">
