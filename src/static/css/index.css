@@ -1,7 +1,7 @@
 .index-title {
-  font-size: 40px;
-  padding-top: 40px;
   font-weight: 550;
+  font-size: 60px;
+  padding-top: 160px;
 }
 
 .index-title-sub {
@@ -62,4 +62,16 @@
 .index-nextevents-card > .mdl-card__actions > .mdl-button,
 .index-nextevents-card > .mdl-card__supporting-text {
   color: #fff;
+}
+
+/**** Mobile layout ****/
+@media (max-width: 900px) {
+
+  .index-title {
+    padding-top: 160px;
+    font-size: 26px;
+    margin: 0 16px;
+    padding-top: 24px;
+  }
+
 }
