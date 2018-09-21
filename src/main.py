@@ -25,9 +25,10 @@ def catch_event():
     page = request.args.get('page')
     page = 1 if page is None else int(page)
     Events = read_db.readInfo().readEvent()
-    page_serial = page * 15
-    Events = Events[page_serial - 15: page_serial]
-    return render_template("events.html", Events=Events, page=page, nextpage=page + 1, prevpage=page - 1)
+    page_serial = page * PAGE_DISPLAY
+    lastflag = True if int(len(Events) / PAGE_DISPLAY) >= page else False
+    Events = Events[page_serial - PAGE_DISPLAY: page_serial]
+    return render_template("events.html", Events=Events, page=page, nextpage=page + 1, prevpage=page - 1, lastflag=lastflag)
 
 
 @app.route('/news')

@@ -39,10 +39,12 @@
 	</a>
 	{% endif %}
 
+	{% if lastflag == true %}
 	<a href="/events?page={{ nextpage }}">
 		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
 			<i class="material-icons">navigate_next</i>
 		</button>
 	</a>
+	{% endif %}
 </div>
 {% endblock %}
