@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, request
 from app import read_db
 import urllib.parse
 
@@ -8,12 +8,6 @@ import urllib.parse
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 PAGE_DISPLAY = 15
-
-# JSON日本語文字化け対策
-app.config['JSON_AS_ASCII'] = False
-app.config["JSON_SORT_KEYS"] = False
-
-app.config['DEBUG'] = True
 
 
 @app.route('/')
