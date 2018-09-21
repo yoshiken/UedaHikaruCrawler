@@ -23,15 +23,11 @@ def catch_index():
 @app.route('/events')
 def catch_event():
     page = request.args.get('page')
+    page = 1 if page is None else int(page)
     Events = read_db.readInfo().readEvent()
-    if page is None:
-        page = 1
-    page_serial = int(page) * 15
-    nextpage = int(page) + 1
-    prevpage = int(page) - 1
+    page_serial = page * 15
     Events = Events[page_serial - 15: page_serial]
-    print(prevpage)
-    return render_template("events.html", Events=Events, page=page, nextpage=nextpage, prevpage=prevpage)
+    return render_template("events.html", Events=Events, page=page, nextpage=page + 1, prevpage=page - 1)
 
 
 @app.route('/news')
