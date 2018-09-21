@@ -3,7 +3,7 @@ services:
     web:
         build: docker/web
         volumes:
-          - .:/app
+          - ./src/app:/app
         environment:
           PGHOST: postgres
           PGPORT: ${POSTGRES_PORT}

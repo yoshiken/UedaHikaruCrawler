@@ -7,5 +7,5 @@ __pycache__
 /docker/postgres/data
 .python-version
 /log/
-/src/static/img/event/*.jpg
+/src/app/static/img/event/*.jpg
 /docker/https/*

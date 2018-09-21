@@ -11,5 +11,5 @@ done
 
 echo "start web"
 
-cd /app/src
-uwsgi --ini /app/docker/web/uwsgi.ini
+cd /app
+uwsgi --ini /uwsgi.ini

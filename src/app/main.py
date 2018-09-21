@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request
-from app import read_db
+import read_db
 import urllib.parse
 
 
