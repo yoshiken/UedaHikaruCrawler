@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block body %}
 <link rel="stylesheet" href="{{ url_for('static', filename='./css/card.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='./css/events.css') }}">
 <div class="mdl-grid">
 	{% for event in Events %}
   	<div class="mdl-card mdl-cell mdl-cell--11-col mdl-cell--4-col-tablet mdl-shadow--2dp">
@@ -28,5 +29,22 @@
     	</div>
   	</div>
 	{% endfor %}
+</div>
+<div class="events-pager-text">
+	{% if prevpage > 0 %}
+	<a href="/events?page={{ prevpage }}">
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+			<i class="material-icons">navigate_before</i>
+		</button>
+	</a>
+	{% endif %}
+
+	{% if lastflag == true %}
+	<a href="/events?page={{ nextpage }}">
+		<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+			<i class="material-icons">navigate_next</i>
+		</button>
+	</a>
+	{% endif %}
 </div>
 {% endblock %}

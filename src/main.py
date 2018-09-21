@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 from app import read_db
 import urllib.parse
 
 
 app = Flask(__name__, static_folder='static', static_url_path='')
+
+PAGE_DISPLAY = 15
 
 # JSON日本語文字化け対策
 app.config['JSON_AS_ASCII'] = False
@@ -22,8 +24,13 @@ def catch_index():
 
 @app.route('/events')
 def catch_event():
-    Event = read_db.readInfo().readEvent()
-    return render_template("events.html", Events=Event)
+    page = request.args.get('page')
+    page = 1 if page is None else int(page)
+    Events = read_db.readInfo().readEvent()
+    page_serial = page * PAGE_DISPLAY
+    lastflag = True if int(len(Events) / PAGE_DISPLAY) >= page else False
+    Events = Events[page_serial - PAGE_DISPLAY: page_serial]
+    return render_template("events.html", Events=Events, page=page, nextpage=page + 1, prevpage=page - 1, lastflag=lastflag)
 
 
 @app.route('/news')
