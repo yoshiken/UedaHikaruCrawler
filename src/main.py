@@ -54,24 +54,6 @@ def catch_develop():
     return render_template("develop.html")
 
 
-@app.route('/api/events')
-def catch_apiEvents():
-    Events = read_db.readInfo().readEvent()
-    return jsonify({
-        'status': '200',
-        'events': Events
-    })
-
-
-@app.route('/api/news')
-def catch_apiNews():
-    News = read_db.readInfo().readNews()
-    return jsonify({
-        'status': '200',
-        'news': News
-    })
-
-
 def createGoogleCalendarAddURL(events):
     for i, event in enumerate(events):
         url = 'http://www.google.com/calendar/event?action=TEMPLATE'
