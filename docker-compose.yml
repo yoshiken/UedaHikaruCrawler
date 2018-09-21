@@ -21,6 +21,8 @@ services:
           - web
         ports:
           - "4231:80"
+    api-sanic:
+        build: docker/api
     postgres:
         build: docker/postgres
         ports:
