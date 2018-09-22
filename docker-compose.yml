@@ -25,6 +25,7 @@ services:
         build: docker/api
         volumes:
           - ./src/api:/api
+          - ./log/:/log/
         environment:
           PGHOST: postgres
           PGPORT: ${POSTGRES_PORT}
@@ -77,7 +78,7 @@ services:
           - web-nginx
         restart: always
         environment:
-          DOMAINS: 'uedahikaru.info -> http://web-nginx/'
+          DOMAINS: 'uedahikaru.info -> http://web-nginx/ , api.uedahikaru.info -> http://api-nginx/'
           STAGE: local
           #STAGE: 'production'
         volumes:

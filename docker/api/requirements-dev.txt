@@ -2,4 +2,4 @@ PyQuery
 sanic
 sqlalchemy
 psycopg2
-uwsgi
+gunicorn

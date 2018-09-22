@@ -11,4 +11,5 @@ done
 
 echo "start api"
 
-uwsgi --ini /uwsgi.ini
+cd api
+gunicorn --bind 0.0.0.0:3032 main:app --worker-class sanic.worker.GunicornWorker
