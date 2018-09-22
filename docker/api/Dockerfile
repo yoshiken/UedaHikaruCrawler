@@ -33,3 +33,8 @@ COPY requirements-dev.txt .
 RUN pip install --upgrade pip &&\
     pip install --upgrade setuptools &&\
     pip install -r requirements-dev.txt
+
+COPY entrypoint.sh .
+COPY uwsgi.ini .
+
+CMD ["sh", "./entrypoint.sh"]

@@ -23,6 +23,17 @@ services:
           - "4231:80"
     api-sanic:
         build: docker/api
+        volumes:
+          - ./src/api:/api
+        environment:
+          PGHOST: postgres
+          PGPORT: ${POSTGRES_PORT}
+          PGUSER: ${POSTGRES_USER}
+          PGPASSWORD: ${POSTGRES_PASSWORD}
+        ports:
+          - "3032:3032"
+        depends_on:
+          - postgres
     postgres:
         build: docker/postgres
         ports:
