@@ -1,5 +1,4 @@
 PyQuery
 sanic
-sqlalchemy
 psycopg2
 gunicorn
