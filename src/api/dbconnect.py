@@ -13,3 +13,11 @@ class dbBase:
         self.dsn = 'postgresql://' + pguser + ':' + pgpassword + '@' + pghost + ':' + str(pgport) + '/' + pguser
         self.conn = psycopg2.connect(self.dsn)
         self.cur = self.conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+
+    def get_dict_resultset(self, sql):
+        self.cur.execute(sql)
+        results = self.cur.fetchall()
+        dict_result = []
+        for row in results:
+            dict_result.append(dict(row))
+        return dict_result
