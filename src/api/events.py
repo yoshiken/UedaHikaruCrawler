@@ -5,7 +5,7 @@ from datetime import date, time
 
 class ReadEvents(dbBase):
     def allEvents(self):
-        sql = 'SELECT day, doortime, showtime, closetime, location FROM event ORDER BY showtime, day DESC'
+        sql = 'SELECT title, day, doortime, showtime, closetime, location FROM event ORDER BY showtime, day DESC'
         result = self.get_dict_resultset(sql)
         return self.replacementTypeDateToString(result)
 
