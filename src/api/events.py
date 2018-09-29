@@ -21,6 +21,6 @@ class ReadEvents(dbBase):
         if isinstance(mix, date):
             return mix.strftime('%Y/%m/%d')
         if isinstance(mix, time):
-            return mix.strftime('%H/%M/%S')
+            return mix.strftime('%H:%M')
         if mix is None:
             return mix
