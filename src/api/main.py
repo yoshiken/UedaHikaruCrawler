@@ -1,5 +1,4 @@
-from sanic import Sanic
-from sanic import response
+from sanic import Sanic, response
 from events import ReadEvents
 import json
 
@@ -21,6 +20,8 @@ def eventsSwitch(args):
     print(eventModel.allEvents())
     if not args:
         return json.dumps(eventModel.allEvents(), ensure_ascii=False)
+    if args:
+        return json.dumps(eventModel.allEvents(), ensure_ascii=False, indent=4)
 
 
 if __name__ == '__main__':
