@@ -17,10 +17,9 @@ async def get_events(request):
 
 def eventsSwitch(args):
     eventModel = ReadEvents()
-    print(eventModel.allEvents())
     if not args:
         return json.dumps(eventModel.allEvents(), ensure_ascii=False)
-    if args:
+    if args['human'][0] == 'true':
         return json.dumps(eventModel.allEvents(), ensure_ascii=False, indent=4)
 
 
