@@ -14,11 +14,11 @@ class ReadEvents(dbBase):
         string_result = []
         for result in results:
             for k, v in result.items():
-                result[k] = v if isinstance(v, str) else self.decodeToFomat(v)
+                result[k] = v if isinstance(v, str) else self.decodeToStringFomat(v)
             string_result.append(result)
         return string_result
 
-    def decodeToFomat(self, mix):
+    def decodeToStringFomat(self, mix):
         if isinstance(mix, date):
             return mix.strftime('%Y/%m/%d')
         if isinstance(mix, time):
