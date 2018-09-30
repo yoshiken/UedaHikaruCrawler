@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from dbconnect import dbBase
-from datetime import date, time
 
 
 class ReadEvents(dbBase):
@@ -17,15 +16,6 @@ class ReadEvents(dbBase):
                 result[k] = v if isinstance(v, str) else self.decodeToStringFomat(v)
             string_result.append(result)
         return string_result
-
-    def decodeToStringFomat(self, mix):
-        if isinstance(mix, date):
-            return mix.strftime('%Y/%m/%d')
-        if isinstance(mix, time):
-            return mix.strftime('%H:%M')
-        if mix is None:
-            return mix
-        return mix
 
     def convertToJsonFormat(self, results):
         jsonresult = []

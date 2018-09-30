@@ -2,6 +2,7 @@
 import psycopg2
 import psycopg2.extras
 import os
+from datetime import date, time
 
 
 class dbBase:
@@ -21,3 +22,12 @@ class dbBase:
         for row in results:
             dict_result.append(dict(row))
         return dict_result
+
+    def decodeToStringFomat(self, mix):
+        if isinstance(mix, date):
+            return mix.strftime('%Y/%m/%d')
+        if isinstance(mix, time):
+            return mix.strftime('%H:%M')
+        if mix is None:
+            return mix
+        return mix
