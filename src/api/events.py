@@ -7,7 +7,8 @@ class ReadEvents(dbBase):
     def allEvents(self):
         sql = 'SELECT eventid, title, day, doortime, showtime, closetime, location FROM event ORDER BY showtime, day DESC'
         result = self.get_dict_resultset(sql)
-        return self.replacementTypeDateToString(result)
+        stringresult = self.replacementTypeDateToString(result)
+        return self.convertToJsonFormat(stringresult)
 
     def replacementTypeDateToString(self, results):
         string_result = []
@@ -24,3 +25,12 @@ class ReadEvents(dbBase):
             return mix.strftime('%H:%M')
         if mix is None:
             return mix
+        return mix
+
+    def convertToJsonFormat(self, results):
+        jsonresult = []
+        for result in results:
+            jsontimebody = {'day': result['day'], 'doortime': result['doortime'], 'showtime': result['showtime'], 'closetime': result['closetime']}
+            jsonbody = {'title': result['title'], 'location': result['location'], 'time': jsontimebody}
+            jsonresult.append({'eventid': result['eventid'], 'body': jsonbody})
+        return jsonresult
