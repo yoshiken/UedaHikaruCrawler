@@ -21,6 +21,16 @@ def eventsSwitch(args):
         return json.dumps(eventModel.allEvents(), ensure_ascii=False)
     if args['human'][0] == 'true':
         return json.dumps(eventModel.allEvents(), ensure_ascii=False, indent=4)
+def errorResponse(errorStatus):
+    response = {'status': 400}
+    errorDetail = {
+        'Validation': 'Validation Error'
+    }
+    try:
+        response['body'] = {'error detail': errorDetail[errorStatus]}
+    except KeyError:
+        response['body'] = 'Unknown error'
+    return response
 
 
 if __name__ == '__main__':
