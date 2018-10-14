@@ -19,7 +19,7 @@ async def get_events(request):
 
 
 def eventArgsParse(args):
-    params = {'human': 'False', 'ordertype': 'ASC'}
+    params = {'human': 'False', 'ordertype': 'DESC'}
     if not args:
         return params
     for k, v in args.items():
@@ -31,7 +31,7 @@ def eventsSwitch(params):
     eventModel = ReadEvents()
     if params['human'] == 'true':
         return json.dumps(eventModel.allEvents(), ensure_ascii=False, indent=4)
-    if params['ordertype'] == 'DESC':
+    if params['ordertype'] == 'ASC':
         return json.dumps(eventModel.allEvents(), ensure_ascii=False)
     return json.dumps(eventModel.allEvents(), ensure_ascii=False)
 
