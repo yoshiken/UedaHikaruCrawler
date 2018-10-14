@@ -14,15 +14,28 @@ async def test(request):
 async def get_events(request):
     if eventArgsValidation(request.args):
         return response.json(errorResponse('Validation'))
-    return response.text(eventsSwitch(request.args))
+    params = eventArgsParse(request.args)
+    return response.text(eventsSwitch(params))
 
 
-def eventsSwitch(args):
-    eventModel = ReadEvents()
+def eventArgsParse(args):
+    params = {'human': 'False', 'ordertype': 'ASC'}
     if not args:
-        return json.dumps(eventModel.allEvents(), ensure_ascii=False)
-    if args['human'][0] == 'true':
+        return params
+    for k, v in args.items():
+        params[k] = v[0]
+    return params
+
+
+def eventsSwitch(params):
+    eventModel = ReadEvents()
+    if params['human'] == 'true':
         return json.dumps(eventModel.allEvents(), ensure_ascii=False, indent=4)
+    if params['ordertype'] == 'DESC':
+        return json.dumps(eventModel.allEvents(), ensure_ascii=False)
+    return json.dumps(eventModel.allEvents(), ensure_ascii=False)
+
+
 def eventArgsValidation(args):
     validationCollection = {'human': ['true', 'false'], 'ordertype': ['ASC', 'DESC']}
     if not args:
