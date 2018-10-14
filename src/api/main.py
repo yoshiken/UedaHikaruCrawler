@@ -12,6 +12,8 @@ async def test(request):
 
 @app.route('/events')
 async def get_events(request):
+    if eventArgsValidation(request.args):
+        return response.json(errorResponse('Validation'))
     return response.text(eventsSwitch(request.args))
 
 
@@ -21,6 +23,16 @@ def eventsSwitch(args):
         return json.dumps(eventModel.allEvents(), ensure_ascii=False)
     if args['human'][0] == 'true':
         return json.dumps(eventModel.allEvents(), ensure_ascii=False, indent=4)
+def eventArgsValidation(args):
+    validationCollection = {'human': ['true', 'false'], 'ordertype': ['ASC', 'DESC']}
+    if not args:
+        return False
+    for param in args:
+        if args[param][0] not in validationCollection[param]:
+            return True
+    return False
+
+
 def errorResponse(errorStatus):
     response = {'status': 400}
     errorDetail = {
