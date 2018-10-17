@@ -30,10 +30,8 @@ def eventArgsParse(args):
 def eventsSwitch(params):
     eventModel = ReadEvents()
     if params['human'] == 'true':
-        return json.dumps(eventModel.allEvents(), ensure_ascii=False, indent=4)
-    if params['ordertype'] == 'ASC':
-        return json.dumps(eventModel.allEvents(), ensure_ascii=False)
-    return json.dumps(eventModel.allEvents(), ensure_ascii=False)
+        return json.dumps(eventModel.allEvents(params['ordertype'] == 'ASC'), ensure_ascii=False, indent=4)
+    return json.dumps(eventModel.allEvents(params['ordertype'] == 'ASC'), ensure_ascii=False)
 
 
 def eventArgsValidation(args):

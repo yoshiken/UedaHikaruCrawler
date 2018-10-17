@@ -3,8 +3,10 @@ from dbconnect import dbBase
 
 
 class ReadEvents(dbBase):
-    def allEvents(self):
-        sql = 'SELECT eventid, title, day, doortime, showtime, closetime, location FROM event ORDER BY showtime, day DESC'
+    def allEvents(self, reverse=False):
+        sql = 'SELECT eventid, title, day, doortime, showtime, closetime, location FROM event ORDER BY showtime, day '
+        ordertype = 'ASC' if reverse else 'DESC'
+        sql = sql + ordertype
         result = self.get_dict_resultset(sql)
         stringresult = self.replacementTypeDateToString(result)
         return self.convertToJsonFormat(stringresult)
