@@ -78,7 +78,7 @@ class Event:
             filename = imgURL.split('/')[-1]
             filenames.append(filename)
             try:
-                with open('/src/static/img/event/' + filename, 'wb') as f:
+                with open('/src/app/static/img/event/' + filename, 'wb') as f:
                     f.write(img.content)
             except FileExistsError:
                 pass
