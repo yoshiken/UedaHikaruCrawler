@@ -56,7 +56,7 @@ class Event:
         # TODO ec使う必要あるか？(index引っ張ってこれそう)
         for ec in range(eventcount):
             events.append({
-                "eventid": ec,
+                "eventid": ec + 1,
                 "date": datelist[ec],
                 "title": titlelist[ec],
                 "doortime": doortimelist[ec],
