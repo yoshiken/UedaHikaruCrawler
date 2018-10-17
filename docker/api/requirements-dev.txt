@@ -1,0 +1,4 @@
+PyQuery
+sanic
+psycopg2
+gunicorn

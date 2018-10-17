@@ -21,7 +21,6 @@ RUN apk update && \
         postgresql-dev \
         postgresql-client
 
-
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     apk del tzdata
 
@@ -35,6 +34,6 @@ RUN pip install --upgrade pip &&\
     pip install --upgrade setuptools &&\
     pip install -r requirements-dev.txt
 
-COPY ./docker/web/entrypoint.sh .
+COPY entrypoint.sh .
 
 CMD ["sh", "./entrypoint.sh"]

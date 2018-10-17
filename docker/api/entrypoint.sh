@@ -9,7 +9,7 @@ done
 
 >&2 echo "Posgresql is up - executing command"
 
-echo "start web"
+echo "start api"
 
-cd /app
-uwsgi --ini /uwsgi.ini
+cd api
+gunicorn --bind 0.0.0.0:3032 --reload main:app --worker-class sanic.worker.GunicornWorker

@@ -1,19 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from flask import Flask, render_template, jsonify, request
-from app import read_db
+from flask import Flask, render_template, request
+import read_db
 import urllib.parse
 
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 
 PAGE_DISPLAY = 15
-
-# JSON日本語文字化け対策
-app.config['JSON_AS_ASCII'] = False
-app.config["JSON_SORT_KEYS"] = False
-
-app.config['DEBUG'] = True
 
 
 @app.route('/')
@@ -52,24 +46,6 @@ def catch_about():
 @app.route('/develop')
 def catch_develop():
     return render_template("develop.html")
-
-
-@app.route('/api/events')
-def catch_apiEvents():
-    Events = read_db.readInfo().readEvent()
-    return jsonify({
-        'status': '200',
-        'events': Events
-    })
-
-
-@app.route('/api/news')
-def catch_apiNews():
-    News = read_db.readInfo().readNews()
-    return jsonify({
-        'status': '200',
-        'news': News
-    })
 
 
 def createGoogleCalendarAddURL(events):
