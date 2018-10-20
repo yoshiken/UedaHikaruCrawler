@@ -76,6 +76,7 @@ services:
           - '443:443'
         links:
           - web-nginx
+          - api-nginx
         restart: always
         environment:
           DOMAINS: 'uedahikaru.info -> http://web-nginx/ , api.uedahikaru.info -> http://api-nginx/'
