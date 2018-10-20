@@ -80,7 +80,8 @@ services:
         restart: always
         environment:
           DOMAINS: 'uedahikaru.info -> http://web-nginx/ , api.uedahikaru.info -> http://api-nginx/'
-          STAGE: local
+          STAGE: 'local'
           #STAGE: 'production'
+          #FORCE_RENEW: 'true'
         volumes:
           - ./docker/https/certs/:/var/lib/https-portal/
