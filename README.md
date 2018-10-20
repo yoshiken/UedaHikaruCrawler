@@ -3,6 +3,24 @@
 
 [![CircleCI](https://circleci.com/gh/yoshiken/UedaHikaruCrawler.svg?style=svg&circle-token=c8a648c31ec0cbfdf2c5ef19ad415c5a61000b65)](https://circleci.com/gh/yoshiken/UedaHikaruCrawler)
 
+## 使い方
+
+Docker-composeまで入れてる前提で↓のコマンドで起動する。
+
+```
+cp .env.sample .env
+docker-compose up -d
+```
+
+あとはcronが走るのを待てばオワリ。
+
+ローカル上だとアクセスは下記の通り。
+
+- web-server
+  - http://localhost:4231/
+- api-server(α)
+  - http://localhost:4232/
+
 
 ## ゴール
 
