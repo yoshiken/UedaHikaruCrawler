@@ -11,23 +11,27 @@
 <label class="index-nextevent-title"><label class="material-icons index-nextevent-title-icon">fast_forward</label>Next Events　</label>
 </div>
 <div class="index-flex">
-  {% for NextEvent in NextEvents %}
-    <div class="index-nextevents-card mdl-card mdl-shadow--2dp mdl-cell--5-col">
-      <div class="mdl-card__title mdl-card--expand">
-        <h6>{{ NextEvent.title }}</h6>
+  {% if NextEvents is defined and NextEvents|length > 0 %}
+    {% for NextEvent in NextEvents %}
+      <div class="index-nextevents-card mdl-card mdl-shadow--2dp mdl-cell--5-col">
+        <div class="mdl-card__title mdl-card--expand">
+          <h6>{{ NextEvent.title }}</h6>
+        </div>
+        <div class="mdl-card__supporting-text index-nextevent-text">
+          <h7><i class="material-icons">location_on</i>{{ NextEvent.location }}<h7>
+          <i class="material-icons">today</i><h7>{{ NextEvent.day }}</h7>
+          <h7>{{ NextEvent.showtime }}</h7>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+          <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ NextEvent.addccalendaurl }}" target=”_blank”>
+            Add to Calendar
+          </a>
+          <div class="mdl-layout-spacer"></div>
+        </div>
       </div>
-      <div class="mdl-card__supporting-text index-nextevent-text">
-        <h7><i class="material-icons">location_on</i>{{ NextEvent.location }}<h7>
-        <i class="material-icons">today</i><h7>{{ NextEvent.day }}</h7>
-        <h7>{{ NextEvent.showtime }}</h7>
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="{{ NextEvent.addccalendaurl }}" target=”_blank”>
-          Add to Calendar
-        </a>
-        <div class="mdl-layout-spacer"></div>
-      </div>
-    </div>
-  {% endfor %}
+    {% endfor %}
+  {% else %}
+    <label class="index-nextevent-title">The next event does not exist. 😢</label>
+  {% endif %}
 </div>
 {% endblock %}
