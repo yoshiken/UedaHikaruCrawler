@@ -7,5 +7,4 @@ CREATE TABLE event (
   closetime TIME,
   location TEXT,
   imgname TEXT,
-  love INTEGER DEFAULT 0
 );
