@@ -6,5 +6,5 @@ CREATE TABLE event (
   showtime TIME,
   closetime TIME,
   location TEXT,
-  imgname TEXT,
+  imgname TEXT
 );

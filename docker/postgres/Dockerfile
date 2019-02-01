@@ -7,7 +7,3 @@ RUN apk update && \
 
 RUN cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime && \
     apk del tzdata
-
-
-COPY ./create /docker-entrypoint-initdb.d
-ENV LANG ja_JP.utf8
