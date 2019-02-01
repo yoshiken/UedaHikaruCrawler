@@ -1,3 +1,0 @@
-CREATE TABLE wikipedia (
-  revid INTEGER PRIMARY KEY NOT NULL
-);
